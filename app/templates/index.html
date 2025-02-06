@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watch Store</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Explore Our Watch Collection</h1>
+    </header>
+    <main>
+      <section class="watch-gallery">
+        {% for watch in watches %}
+        <div class="watch-card">
+          <img
+            src="{{ url_for('static', filename=watch.image_url) }}"
+            alt="{{ watch.name }}"
+          />
+          <div class="watch-details">
+            <h2>{{ watch.name }}</h2>
+            <p class="brand">{{ watch.brand }}</p>
+            <p class="price">${{ watch.price }}</p>
+            <p class="description">{{ watch.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+    </main>
+  </body>
+</html>

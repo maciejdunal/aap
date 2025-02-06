@@ -175,3 +175,4 @@ custom/
 aap/
 venv/
 zaliczenie.pdf
+*.db
