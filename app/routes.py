@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
-from app.models import Watch
+from flask_login import login_required, current_user
+from app.models import Watch, OrderItem
 
 main = Blueprint('main', __name__)
 
@@ -8,7 +9,6 @@ def index():
     category = request.args.get('category', 'all')
     search_query = request.args.get('search', '').strip().lower()
 
-    # Filtrowanie według kategorii
     if category == 'all':
         watches = Watch.query
     elif category == 'men':
@@ -22,11 +22,23 @@ def index():
     else:
         watches = Watch.query
 
-    # Dodanie wyszukiwania do zapytania
     if search_query:
         watches = watches.filter(Watch.brand.ilike(f'%{search_query}%'))
 
-    # Pobranie wyników jako lista
     watches = watches.all()
 
     return render_template('index.html', watches=watches)
+
+@main.route('/my-watches')
+@login_required
+def my_watches():
+
+    bought_watches = (
+        Watch.query
+        .join(OrderItem, Watch.id == OrderItem.product_id)
+        .join(OrderItem.order)
+        .filter(OrderItem.order.has(user_id=current_user.id))
+        .all()
+    )
+
+    return render_template('my_watches.html', watches=bought_watches)

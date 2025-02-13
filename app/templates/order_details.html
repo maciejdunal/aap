@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order #{{ order.id }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="{{ url_for('main.index') }}">
+          <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+        </a>
+      </div>
+      <div class="user-options">
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+      </div>
+    </header>
+
+    <main class="order-details-container">
+      <h1>Order #{{ order.id }}</h1>
+      <p><strong>Date:</strong> {{ order.date }}</p>
+      <p>
+        <strong>Total Price:</strong> ${{ "%.2f"|format(order.total_price) }}
+      </p>
+
+      <table class="order-items-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td>
+            {% for item in order.items %} {{ item.product.name }}{% if not
+            loop.last %}, {% endif %} {% endfor %}
+          </td>
+
+          <tr>
+            <td>{{ item.watch.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>${{ "%.2f"|format(item.watch.price) }}</td>
+            <td>${{ "%.2f"|format(item.quantity * item.watch.price) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <a href="{{ url_for('orders.view_orders') }}" class="btn-back"
+        >Back to Orders</a
+      >
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+      </div>
+      <div class="footer-info">
+        <p>30-200 Cracow</p>
+        <p>Email: mdsupport@watchstore.com</p>
+        <p>Phone: +739 221 226</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -10,21 +10,40 @@
     />
   </head>
   <body>
-    <!-- Header -->
     <header class="header">
       <div class="logo">
         <a href="{{ url_for('main.index') }}">
           <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
         </a>
       </div>
+      <div class="search-bar">
+        <form action="{{ url_for('main.index') }}" method="GET">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search for watches..."
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
       <div class="user-options">
-        <a href="{{ url_for('main.index') }}">Home</a>
-        <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-        <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('cart.view_cart') }}">Cart</a>
+        <div class="dropdown">
+          <button class="dropdown-btn">☰</button>
+          <div class="dropdown-content">
+            <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
+            <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
       </div>
     </header>
 
-    <!-- Cart Content -->
     <div class="cart-container">
       <h1>Your Shopping Cart</h1>
       {% if cart_items %}
@@ -80,8 +99,10 @@
       </table>
 
       <div class="cart-summary">
-        <p>Total: ${{ total_price }}</p>
-        <button class="checkout-btn">Proceed to Checkout</button>
+        <p>Total: ${{ "%.2f"|format(total_price) }}</p>
+        <a href="{{ url_for('checkout.view_checkout') }}" class="checkout-btn"
+          >Proceed to Checkout</a
+        >
       </div>
       {% else %}
       <p class="empty-cart">Your cart is empty.</p>

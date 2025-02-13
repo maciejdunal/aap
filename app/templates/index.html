@@ -10,7 +10,6 @@
     />
   </head>
   <body>
-    <!-- Header -->
     <header class="header">
       <div class="logo">
         <a href="{{ url_for('main.index') }}">
@@ -34,7 +33,7 @@
           <button class="dropdown-btn">☰</button>
           <div class="dropdown-content">
             <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-            <a href="{{ url_for('main.index') }}">My Watches</a>
+            <a href="{{ url_for('main.my_watches') }}">My Watches</a>
             <a href="{{ url_for('auth.logout') }}">Logout</a>
           </div>
         </div>
@@ -45,7 +44,6 @@
       </div>
     </header>
 
-    <!-- Categories -->
     <nav class="categories">
       <a
         href="{{ url_for('main.index', category='all') }}"
@@ -74,7 +72,6 @@
       >
     </nav>
 
-    <!-- Main Content -->
     <main>
       <section class="watch-gallery">
         {% for watch in watches %}
@@ -106,15 +103,14 @@
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-logo">
         <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
       </div>
       <div class="footer-info">
-        <p>123 Watch Street</p>
-        <p>Email: contact@watchstore.com</p>
-        <p>Phone: +123 456 789</p>
+        <p>30-200 Cracow</p>
+        <p>Email: mdsupport@watchstore.com</p>
+        <p>Phone: +739 221 226</p>
         <p>Fax: +123 456 780</p>
       </div>
     </footer>
