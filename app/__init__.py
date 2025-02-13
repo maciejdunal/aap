@@ -15,16 +15,19 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
 
+
     from .routes import main
     from .auth_routes import auth
     from .cart_routes import cart
-    from .orders_routes import orders  # Nowo dodany import
+    from .orders_routes import orders
+    from .checkout_routes import checkout
+
 
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(cart)
-    app.register_blueprint(orders)  # Rejestrujemy zamówienia
-
+    app.register_blueprint(orders)
+    app.register_blueprint(checkout)
     return app
 
 @login_manager.user_loader

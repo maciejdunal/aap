@@ -1,4 +1,15 @@
-/* Ogólne style */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,7 +18,6 @@ body {
     color: #333;
 }
 
-/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -23,23 +33,29 @@ body {
 
 .header .search-bar {
     flex-grow: 1;
-    margin: 0 20px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .header .search-bar input {
-    width: 70%;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .header .search-bar button {
-    padding: 5px 10px;
+    padding: 8px 12px;
     background-color: white;
     color: #007bff;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+.header .search-bar button:hover {
+    background-color: #007bff;
+    color: white;
 }
 
 .header .user-options a {
@@ -48,7 +64,6 @@ body {
     text-decoration: none;
 }
 
-/* Dropdown Menu */
 .header .user-options .dropdown {
     position: relative;
     display: inline-block;
@@ -69,6 +84,8 @@ body {
     min-width: 150px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    right: 0; 
+    left: auto;
 }
 
 .header .user-options .dropdown-content a {
@@ -86,7 +103,6 @@ body {
     display: block;
 }
 
-/* Kategorie */
 .categories {
     display: flex;
     justify-content: center;
@@ -106,7 +122,6 @@ body {
     text-decoration: underline;
 }
 
-/* Galeria Produktów */
 .watch-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -172,13 +187,12 @@ body {
     background-color: #0056b3;
 }
 
-/* Footer */
 footer {
     background-color: #343a40;
     color: white;
     text-align: center;
     padding: 20px 0;
-    margin-top: 30px;
+    margin-top: auto;
 }
 
 footer .footer-logo img {
@@ -191,7 +205,6 @@ footer .footer-info p {
     font-size: 14px;
 }
 
-/* Style dla formularzy logowania i rejestracji */
 .auth-container {
     max-width: 400px;
     margin: 50px auto;
@@ -247,7 +260,6 @@ footer .footer-info p {
     background-color: #0056b3;
 }
 
-/* Koszyk */
 .cart-container {
     max-width: 1200px;
     margin: 20px auto;
@@ -322,7 +334,6 @@ footer .footer-info p {
     font-weight: bold;
 }
 
-/* Checkout Page */
 .checkout-container {
     max-width: 600px;
     margin: 40px auto;
@@ -374,5 +385,143 @@ footer .footer-info p {
 }
 
 .checkout-btn:hover {
+    background-color: #0056b3;
+}
+
+.orders-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.orders-table th, .orders-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.orders-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-details, .btn-xml {
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+}
+
+.btn-details {
+    background-color: #28a745;
+}
+
+.btn-xml {
+    background-color: #ffc107;
+}
+
+.btn-details:hover, .btn-xml:hover {
+    opacity: 0.8;
+}
+
+.checkout-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.my-watches-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 900px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.my-watches-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.my-watch-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    width: 220px; /* Ustalona szerokość dla równego układu */
+    border: 2px solid #ddd; /* Obramowanie */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.my-watch-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-color: #007bff;
+}
+
+.my-watch-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-bottom: 2px solid #ddd; /* Delikatne oddzielenie obrazka */
+    padding-bottom: 10px;
+}
+
+.my-watch-card h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.empty-watches {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.empty-watches .empty-image {
+    max-width: 150px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+.empty-watches p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.btn-shop {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn-shop:hover {
     background-color: #0056b3;
 }

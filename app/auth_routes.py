@@ -24,13 +24,11 @@ def register():
         username = request.form.get('username')
         password = request.form.get('password')
 
-        # 🔹 Sprawdzenie, czy użytkownik już istnieje
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             flash('Username already exists. Please choose another one.', 'error')
             return redirect(url_for('auth.register'))
 
-        # 🔹 Hashowanie hasła przed zapisem do bazy
         hashed_password = generate_password_hash(password)
 
         new_user = User(username=username, password=hashed_password)
