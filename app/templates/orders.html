@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>My Orders</h1>
+      <nav>
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('cart.view_cart') }}">Cart</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+      </nav>
+    </header>
+    <main>
+      <div class="orders-container">
+        {% if orders %}
+        <ul class="orders-list">
+          {% for order in orders %}
+          <li class="order-item">
+            <h2>Order #{{ order.id }}</h2>
+            <p>Total Price: ${{ order.total_price }}</p>
+            <p>Order Date: {{ order.date.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>You have no orders yet.</p>
+        {% endif %}
+      </div>
+    </main>
+  </body>
+</html>
