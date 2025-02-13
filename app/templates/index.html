@@ -10,9 +10,71 @@
     />
   </head>
   <body>
-    <header>
-      <h1>Explore Our Watch Collection</h1>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <a href="{{ url_for('main.index') }}">
+          <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+        </a>
+      </div>
+      <div class="search-bar">
+        <form action="{{ url_for('main.index') }}" method="GET">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search for watches..."
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <div class="user-options">
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('cart.view_cart') }}">Cart</a>
+        <div class="dropdown">
+          <button class="dropdown-btn">☰</button>
+          <div class="dropdown-content">
+            <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
+            <a href="{{ url_for('main.index') }}">My Watches</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
+      </div>
     </header>
+
+    <!-- Categories -->
+    <nav class="categories">
+      <a
+        href="{{ url_for('main.index', category='all') }}"
+        class="category-link"
+        >All</a
+      >
+      <a
+        href="{{ url_for('main.index', category='men') }}"
+        class="category-link"
+        >Men</a
+      >
+      <a
+        href="{{ url_for('main.index', category='women') }}"
+        class="category-link"
+        >Women</a
+      >
+      <a
+        href="{{ url_for('main.index', category='sport') }}"
+        class="category-link"
+        >Sport</a
+      >
+      <a
+        href="{{ url_for('main.index', category='luxury') }}"
+        class="category-link"
+        >Luxury</a
+      >
+    </nav>
+
+    <!-- Main Content -->
     <main>
       <section class="watch-gallery">
         {% for watch in watches %}
@@ -26,10 +88,35 @@
             <p class="brand">{{ watch.brand }}</p>
             <p class="price">${{ watch.price }}</p>
             <p class="description">{{ watch.description }}</p>
+            {% if current_user.is_authenticated %}
+            <form
+              action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
+              method="POST"
+            >
+              <button type="submit">Add to Cart</button>
+            </form>
+            {% else %}
+            <p>
+              <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
+            </p>
+            {% endif %}
           </div>
         </div>
         {% endfor %}
       </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+      </div>
+      <div class="footer-info">
+        <p>123 Watch Street</p>
+        <p>Email: contact@watchstore.com</p>
+        <p>Phone: +123 456 789</p>
+        <p>Fax: +123 456 780</p>
+      </div>
+    </footer>
   </body>
 </html>

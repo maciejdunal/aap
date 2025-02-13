@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Shopping Cart</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <a href="{{ url_for('main.index') }}">
+          <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+        </a>
+      </div>
+      <div class="user-options">
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+      </div>
+    </header>
+
+    <!-- Cart Content -->
+    <div class="cart-container">
+      <h1>Your Shopping Cart</h1>
+      {% if cart_items %}
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart_items %}
+          <tr>
+            <td>
+              <img
+                src="{{ url_for('static', filename=item.watch.image_url) }}"
+                alt="{{ item.watch.name }}"
+              />
+            </td>
+            <td>{{ item.watch.name }}</td>
+            <td>${{ item.watch.price }}</td>
+            <td>
+              <form
+                action="{{ url_for('cart.update_quantity', item_id=item.id) }}"
+                method="POST"
+              >
+                <input
+                  type="number"
+                  name="quantity"
+                  value="{{ item.quantity }}"
+                  min="1"
+                  class="quantity-input"
+                />
+                <button type="submit" class="btn-update">Update</button>
+              </form>
+            </td>
+            <td>${{ item.watch.price * item.quantity }}</td>
+            <td>
+              <form
+                action="{{ url_for('cart.remove_item', item_id=item.id) }}"
+                method="POST"
+              >
+                <button type="submit" class="btn-remove">Remove</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <p>Total: ${{ total_price }}</p>
+        <button class="checkout-btn">Proceed to Checkout</button>
+      </div>
+      {% else %}
+      <p class="empty-cart">Your cart is empty.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
