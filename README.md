@@ -1,26 +1,31 @@
 # Watch Store E-commerce Application
 
-## 📌 Opis
+## Opis aplikacji
 
-Projekt "Watch Store" to prosta aplikacja e-commerce do zakupu zegarków.
+Projekt **Watch Store** to prosta aplikacja e-commerce umożliwiająca zakup zegarków online.  
 Pozwala użytkownikom na:
 
-- Rejestrację i logowanie 🆕🔐
-- Przeglądanie dostępnych zegarków ⌚
-- Dodawanie produktów do koszyka 🛒
-- Finalizowanie zamówień ✅
-- Przeglądanie historii zamówień 📜
-- Eksport zamówień w formacie XML 📂
+- **Rejestrację i logowanie**
+- **Przeglądanie dostępnych zegarków**
+- **Przeglądanie zegarków w danych kategoriach**
+- **Dodawanie produktów do koszyka**
+- **Podgląd koszyka**
+- **Finalizowanie zamówień**
+- **Przeglądanie historii zamówień**
+- **Eksport zamówień w formacie XML**
+- **Podgląd listy posiadanych zegarków, na podstawie historii zamówień**
 
 ---
 
 ## 🛠 Wymagania
 
-- Python 3.x 🐍
-- Flask
-- SQLAlchemy
-- pytest (do testów)
-- MySQL (lub SQLite dla testów)
+Aby uruchomić aplikację, wymagane są:
+
+- **Python w wersji min. 3.x**
+- **Flask**
+- **SQLAlchemy**
+- **pytest** (do testów)
+- **SQLite** (domyślna baza danych)
 
 Instalacja zależności:
 
@@ -30,71 +35,112 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Uruchamianie aplikacji
+## Uruchamianie aplikacji
 
-1. Skonfiguruj bazę danych i zmienne środowiskowe.
-2. Uruchom aplikację:
+1️. **Skonfigurowanie bazy danych**:
+
+```sh
+python seed.py
+```
+
+2️. **Uruchomienie aplikację**:
 
 ```sh
 python app.py
 ```
 
-3. Otwórz przeglądarkę i przejdź na:
+3️. **Otworzenie wygenerowanego linku, standardowo powinno to być**:
 
 ```
 http://127.0.0.1:5000/
 ```
 
-📸 **Przykładowy ekran główny:**
-![Main Page](screenshots/main_page.png)
+---
 
-📸 **Koszyk użytkownika:**
-![Cart Page](screenshots/cart_page.png)
+## Dokumentacja zdjęciowa
+
+Aby lepiej zrozumieć działanie aplikacji, poniżej znajdują się zrzuty ekranu przedstawiające jej kluczowe funkcjonalności.
+
+### **Rejestracja**
+
+![Main Page](screenshots/register.jpg)
+
+### **Logowanie**
+
+![Main Page](screenshots/Login.jpg)
+
+### **Strona główna**
+
+![Main Page](screenshots/home.jpg)
+
+### **Filtrowanie po kategorii produktow**
+
+![Cart Page](screenshots/sport-category.jpg)
+
+### **Koszyk użytkownika**
+
+![Cart Page](screenshots/cart.jpg)
+
+### **Checkout**
+
+![Cart Page](screenshots/checkout.jpg)
+
+### **Historia zamówień**
+
+![Orders Page](screenshots/orders.jpg)
+
+### **Eksport zamówienia do XML**
+
+![XML Export](screenshots/xml.jpg)
 
 ---
 
-## 🔍 Testowanie aplikacji
+## Testowanie aplikacji
 
-Aby uruchomić testy jednostkowe:
+Aby uruchomić testy jednostkowe, skorzystaj z poniższego polecenia:
 
 ```sh
 pytest tests/
 ```
 
-📸 **Przykładowe wykonanie testów:**
-![Test Execution](screenshots/tests.png)
+![Tests Execution](screenshots/tests_execution.jpg)
 
 ---
 
-## 📦 Struktura projektu
+## Struktura projektu
 
 ```
-project_root/
-│-- app.py  # Plik główny aplikacji
-│-- config.py  # Konfiguracja bazy danych
-│-- models.py  # Modele SQLAlchemy
+aap/
+│-- app.py                   # Główna aplikacja Flask
+│-- models.py                # Modele SQLAlchemy
 │-- routes/
-│   ├── cart.py
-│   ├── orders.py
-│   ├── auth.py
-│   ├── main.py
+│   ├── routes.py            # Home page
+│   ├── auth_routes.py       # Logowanie i rejestracja
+│   ├── cart_routes.py       # Obsługa koszyka
+│   ├── orders_routes.py     # Historia zamówień
+│   ├── checkout_routes.py   # Finalizacja zamówienia
+│   ├── my_watches_routes.py # Kupione zegarki
 │-- static/
-│   ├── styles.css
-│   ├── images/
+│   ├── styles.css           # Plik stylów
 │-- templates/
-│   ├── index.html
-│   ├── cart.html
-│   ├── order_history.html
+│   ├── index.html           # Strona główna
+│   ├── cart.html            # Koszyk
+│   ├── checkout.html        # Finalizacja zamówienia
+│   ├── orders.html          # Historia zamówień
+│   ├── my_watches.html      # Kupione zegarki
 │-- tests/
-│   ├── test_auth.py
-│   ├── test_cart.py
-│   ├── test_orders.py
-│-- README.md  # Dokumentacja
+│   ├── test_cart.py         # Testy koszyka
+│   ├── test_login.py        # Testy logowania
+│   ├── test_orders.py       # Testy zamówień
+│   ├── test_register.py     # Testy rejestracji
+│-- requirements.txt         # Lista zależności
+│-- README.md                # Dokumentacja
+│-- seed.py                  # Skrypt inicjalizujący seedy do bazy danych
 ```
 
 ---
 
-## 🔗 Endpointy API
+## Endpointy API
 
 | Endpoint            | Metoda | Opis                         |
 | ------------------- | ------ | ---------------------------- |
@@ -105,20 +151,6 @@ project_root/
 | `/cart/add/<id>`    | POST   | Dodanie produktu do koszyka  |
 | `/cart/remove/<id>` | POST   | Usunięcie produktu z koszyka |
 | `/orders`           | GET    | Historia zamówień            |
-| `/order/<id>/xml`   | GET    | Pobranie zamówienia jako XML |
+| `/orders/<id>/xml`  | GET    | Pobranie zamówienia jako XML |
 
 ---
-
-## Podsumowanie
-
-- Aplikacja działa na Flasku i wykorzystuje SQLAlchemy do obsługi bazy danych.
-- Do testowania można użyć SQLite zamiast MySQL.
-- W razie problemów sprawdź logi serwera lub uruchom aplikację w trybie debugowania:
-
-```sh
-flask run --debug
-```
-
----
-
-**Autor:** _Twoje Imię_ 👨‍💻

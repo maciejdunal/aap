@@ -15,22 +15,23 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
 
-
     from .routes import main
     from .auth_routes import auth
     from .cart_routes import cart
     from .orders_routes import orders
     from .checkout_routes import checkout
-
+    from .my_watches_routes import my_watches
 
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(cart)
     app.register_blueprint(orders)
     app.register_blueprint(checkout)
+    app.register_blueprint(my_watches)
+
     return app
 
 @login_manager.user_loader
 def load_user(user_id):
     from .models import User
-    return User.query.get(int(user_id))
+    return db.session.get(User, int(user_id))  # Poprawione dla SQLAlchemy 2.0

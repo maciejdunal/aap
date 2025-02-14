@@ -1,6 +1,6 @@
 from . import db
 from flask_login import UserMixin
-from datetime import datetime
+from datetime import datetime, timezone
 
 class Watch(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,7 +29,7 @@ class CartItem(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))  # Poprawione dla SQLAlchemy 2.0
     total_price = db.Column(db.Float, nullable=False)
 
     items = db.relationship('OrderItem', backref='order', lazy=True)
