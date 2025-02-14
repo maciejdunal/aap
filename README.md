@@ -67,7 +67,7 @@ Aby lepiej zrozumieć działanie aplikacji, poniżej znajdują się zrzuty ekran
 
 ### **Logowanie**
 
-![Main Page](screenshots/Login.jpg)
+![Main Page](screenshots/login.jpg)
 
 ### **Strona główna**
 
