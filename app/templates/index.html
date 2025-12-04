@@ -71,10 +71,84 @@
         class="category-link"
         >Luxury</a
       >
+      <div class="category-toggle">
+        {% if show_top_section %}
+        <a
+          href="{{ url_for('main.index', show_top='false') }}"
+          class="toggle-link"
+          >Hide Top Products</a
+        >
+        {% else %}
+        <a
+          href="{{ url_for('main.index', show_top='true') }}"
+          class="toggle-link"
+          >Show Top Products</a
+        >
+        {% endif %}
+      </div>
     </nav>
 
     <main>
+      {% if show_top_section %}
+      <section class="top-products-section">
+        <div class="section-header">
+          <h2>🔥 Top Selling Products</h2>
+          <p class="subtitle">Most popular watches in the last 30 days</p>
+        </div>
+        <div class="top-products-gallery">
+          {% for product_data in top_products %}
+          {% set watch = product_data[0] %}
+          {% set total_sold = product_data[1] %}
+          {% set order_count = product_data[2] %}
+          <div class="top-product-card">
+            <div class="ranking-badge">#{{ loop.index }}</div>
+            {% if total_sold > 0 %}
+            <div class="sales-badge">{{ total_sold }} sold</div>
+            {% else %}
+            <div class="new-badge">New</div>
+            {% endif %}
+            <img
+              src="{{ url_for('static', filename=watch.image_url) }}"
+              alt="{{ watch.name }}"
+            />
+            <div class="watch-details">
+              <h3>{{ watch.name }}</h3>
+              <p class="brand">{{ watch.brand }}</p>
+              <p class="price">${{ watch.price }}</p>
+              <p class="description">{{ watch.description[:100] }}{% if watch.description|length > 100 %}...{% endif %}</p>
+              {% if watch.color or watch.material or watch.purpose %}
+              <div class="watch-specs">
+                {% if watch.color %}<span class="spec">{{ watch.color }}</span>{% endif %}
+                {% if watch.material %}<span class="spec">{{ watch.material }}</span>{% endif %}
+                {% if watch.purpose %}<span class="spec">{{ watch.purpose }}</span>{% endif %}
+              </div>
+              {% endif %}
+              {% if current_user.is_authenticated %}
+              <form
+                action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
+                method="POST"
+              >
+                <button type="submit" class="btn-add-to-cart">Add to Cart</button>
+              </form>
+              {% else %}
+              <p class="login-prompt">
+                <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
+              </p>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
       <section class="watch-gallery">
+        {% if show_top_section %}
+        <div class="section-header">
+          <h2>All Products</h2>
+          <p class="subtitle">Browse our complete collection</p>
+        </div>
+        {% endif %}
         {% for watch in watches %}
         <div class="watch-card">
           <img
@@ -98,10 +172,10 @@
               action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
               method="POST"
             >
-              <button type="submit">Add to Cart</button>
+              <button type="submit" class="btn-add-to-cart">Add to Cart</button>
             </form>
             {% else %}
-            <p>
+            <p class="login-prompt">
               <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
             </p>
             {% endif %}
