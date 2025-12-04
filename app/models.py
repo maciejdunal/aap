@@ -11,6 +11,9 @@ class Watch(db.Model):
     image_url = db.Column(db.String(100), nullable=False)
     sex = db.Column(db.String(10), nullable=False)  # male/female
     category = db.Column(db.String(50), nullable=False)  # sport/luxury
+    color = db.Column(db.String(50), nullable=True)  # watch color
+    material = db.Column(db.String(50), nullable=True)  # watch material
+    purpose = db.Column(db.String(100), nullable=True)  # watch purpose/use case
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)

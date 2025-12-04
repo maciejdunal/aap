@@ -21,6 +21,7 @@ def create_app():
     from .orders_routes import orders
     from .checkout_routes import checkout
     from .my_watches_routes import my_watches
+    from .product_routes import product
 
     app.register_blueprint(main)
     app.register_blueprint(auth)
@@ -28,6 +29,7 @@ def create_app():
     app.register_blueprint(orders)
     app.register_blueprint(checkout)
     app.register_blueprint(my_watches)
+    app.register_blueprint(product)
 
     return app
 

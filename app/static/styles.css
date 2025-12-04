@@ -18,6 +18,20 @@ body {
     color: #333;
 }
 
+.watch-specs {
+    margin-top: 8px;
+}
+
+.watch-specs .spec {
+    display: inline-block;
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 2px 6px;
+    margin: 2px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
