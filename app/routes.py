@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 
 main = Blueprint('main', __name__)
 
-def get_top_selling_products(limit=5, days=30):
+def get_top_selling_products(limit=4, days=30):
     """Get top selling products based on sales in the last N days."""
     cutoff_date = datetime.now(timezone.utc) - timedelta(days=days)
     
@@ -46,7 +46,7 @@ def index():
     show_top = request.args.get('show_top', 'true').lower() == 'true'
 
     # Get top selling products for the main display
-    top_products = get_top_selling_products(limit=6, days=30) if show_top and not search_query and category == 'all' else []
+    top_products = get_top_selling_products(limit=4, days=30) if show_top and not search_query and category == 'all' else []
     
     # Get regular products based on filters
     if category == 'all':

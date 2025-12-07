@@ -100,7 +100,7 @@
           {% set watch = product_data[0] %}
           {% set total_sold = product_data[1] %}
           {% set order_count = product_data[2] %}
-          <div class="top-product-card">
+          <div class="top-product-card" data-watch-id="{{ watch.id }}">
             <div class="ranking-badge">#{{ loop.index }}</div>
             {% if total_sold > 0 %}
             <div class="sales-badge">{{ total_sold }} sold</div>
@@ -127,6 +127,8 @@
               <form
                 action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
                 method="POST"
+                class="add-to-cart-form"
+                data-watch-id="{{ watch.id }}"
               >
                 <button type="submit" class="btn-add-to-cart">Add to Cart</button>
               </form>
@@ -150,7 +152,7 @@
         </div>
         {% endif %}
         {% for watch in watches %}
-        <div class="watch-card">
+        <div class="watch-card" data-watch-id="{{ watch.id }}">
           <img
             src="{{ url_for('static', filename=watch.image_url) }}"
             alt="{{ watch.name }}"
@@ -171,6 +173,8 @@
             <form
               action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
               method="POST"
+              class="add-to-cart-form"
+              data-watch-id="{{ watch.id }}"
             >
               <button type="submit" class="btn-add-to-cart">Add to Cart</button>
             </form>
@@ -196,5 +200,158 @@
         <p>Fax: +123 456 780</p>
       </div>
     </footer>
+
+    <script>
+        // Toast notification system
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : '#dc3545'};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                z-index: 9999;
+                font-weight: bold;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.3s ease;
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Click tracking functionality
+        function trackWatchClick(watchId) {
+            console.log('Tracking click for watch ID:', watchId);
+            
+            fetch('/api/track-click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ watch_id: watchId })
+            })
+            .then(response => {
+                console.log('Click tracking response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Click tracking successful:', data);
+            })
+            .catch(error => {
+                // Log error for debugging but don't interrupt user experience
+                console.error('Click tracking failed:', error);
+            });
+        }
+
+        // AJAX add to cart functionality
+        function handleAddToCart(form, watchId) {
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            // Update button state
+            button.disabled = true;
+            button.textContent = 'Adding...';
+            
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    // Briefly change button text to show success
+                    button.textContent = 'Added!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }, 1000);
+                } else {
+                    showToast(data.message || 'Failed to add to cart', 'error');
+                    button.textContent = originalText;
+                    button.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Add to cart failed:', error);
+                showToast('Failed to add to cart. Please try again.', 'error');
+                button.textContent = originalText;
+                button.disabled = false;
+            });
+        }
+
+        // Initialize everything when DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing enhanced cart functionality...');
+            
+            // Handle add to cart forms with AJAX
+            const addToCartForms = document.querySelectorAll('.add-to-cart-form');
+            console.log('Found', addToCartForms.length, 'add to cart forms');
+            
+            addToCartForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent default form submission
+                    const watchId = form.dataset.watchId;
+                    if (watchId) {
+                        // Track click and add to cart
+                        trackWatchClick(parseInt(watchId));
+                        handleAddToCart(form, watchId);
+                    }
+                });
+            });
+            
+            // Track clicks on watch images and titles (without adding to cart)
+            const images = document.querySelectorAll('.watch-card img, .top-product-card img, .watch-card h2, .top-product-card h3');
+            console.log('Found', images.length, 'clickable images/titles');
+            
+            images.forEach(element => {
+                element.addEventListener('click', function() {
+                    console.log('Image/title clicked');
+                    const watchCard = this.closest('.watch-card, .top-product-card');
+                    if (watchCard) {
+                        const addToCartForm = watchCard.querySelector('.add-to-cart-form');
+                        if (addToCartForm) {
+                            const watchId = addToCartForm.dataset.watchId;
+                            console.log('Extracted watch ID:', watchId);
+                            
+                            if (watchId && !isNaN(watchId)) {
+                                trackWatchClick(parseInt(watchId));
+                            }
+                        }
+                    }
+                });
+            });
+            
+            console.log('Enhanced cart functionality initialization complete');
+        });
+    </script>
   </body>
 </html>

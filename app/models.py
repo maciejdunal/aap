@@ -43,3 +43,15 @@ class OrderItem(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('watch.id'), nullable=False)
     quantity = db.Column(db.Integer, default=1)
     watch = db.relationship('Watch', backref='order_items')
+
+class WatchClick(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    watch_id = db.Column(db.Integer, db.ForeignKey('watch.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)  # Optional, for anonymous tracking
+    ip_address = db.Column(db.String(45), nullable=True)  # Store IP for anonymous users
+    timestamp = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+    user_agent = db.Column(db.String(500), nullable=True)  # Browser info
+    referrer = db.Column(db.String(500), nullable=True)  # Where they came from
+    
+    watch = db.relationship('Watch', backref='clicks')
+    user = db.relationship('User', backref='watch_clicks')
