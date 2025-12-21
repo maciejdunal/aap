@@ -154,3 +154,4 @@ aap/
 | `/orders/<id>/xml`  | GET    | Pobranie zamówienia jako XML |
 
 ---
+
