@@ -1,0 +1,45 @@
+{% if recommendations %}
+<section class="recommendations-section">
+  <div class="section-header">
+    <h2>✨ Special for You</h2>
+    <p class="subtitle">Selected based on your favorite brands</p>
+  </div>
+  <div class="watch-gallery">
+    {% for watch in recommendations %}
+    <div class="watch-card" data-watch-id="{{ watch.id }}">
+      <img
+        src="{{ url_for('static', filename=watch.image_url) }}"
+        alt="{{ watch.name }}"
+      />
+      <div class="watch-details">
+        <h2>{{ watch.name }}</h2>
+        <p class="brand">{{ watch.brand }}</p>
+        <p class="price">${{ watch.price }}</p>
+        <p class="description">{{ watch.description }}</p>
+        {% if watch.color or watch.material or watch.purpose %}
+        <div class="watch-specs">
+          {% if watch.color %}<span class="spec">Color: {{ watch.color }}</span>{% endif %}
+          {% if watch.material %}<span class="spec">Material: {{ watch.material }}</span>{% endif %}
+          {% if watch.purpose %}<span class="spec">Purpose: {{ watch.purpose }}</span>{% endif %}
+        </div>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <form
+          action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
+          method="POST"
+          class="add-to-cart-form"
+          data-watch-id="{{ watch.id }}"
+        >
+          <button type="submit" class="btn-add-to-cart">Add to Cart</button>
+        </form>
+        {% else %}
+        <p class="login-prompt">
+          <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

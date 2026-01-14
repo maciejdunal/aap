@@ -144,6 +144,54 @@
       </section>
       {% endif %}
 
+      <div id="recommendations-container">
+      {% if recommendations %}
+      <section class="recommendations-section">
+        <div class="section-header">
+          <h2>✨ Special for You</h2>
+          <p class="subtitle">Selected based on your favorite brands</p>
+        </div>
+        <div class="watch-gallery">
+          {% for watch in recommendations %}
+          <div class="watch-card" data-watch-id="{{ watch.id }}">
+            <img
+              src="{{ url_for('static', filename=watch.image_url) }}"
+              alt="{{ watch.name }}"
+            />
+            <div class="watch-details">
+              <h2>{{ watch.name }}</h2>
+              <p class="brand">{{ watch.brand }}</p>
+              <p class="price">${{ watch.price }}</p>
+              <p class="description">{{ watch.description }}</p>
+              {% if watch.color or watch.material or watch.purpose %}
+              <div class="watch-specs">
+                {% if watch.color %}<span class="spec">Color: {{ watch.color }}</span>{% endif %}
+                {% if watch.material %}<span class="spec">Material: {{ watch.material }}</span>{% endif %}
+                {% if watch.purpose %}<span class="spec">Purpose: {{ watch.purpose }}</span>{% endif %}
+              </div>
+              {% endif %}
+              {% if current_user.is_authenticated %}
+              <form
+                action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
+                method="POST"
+                class="add-to-cart-form"
+                data-watch-id="{{ watch.id }}"
+              >
+                <button type="submit" class="btn-add-to-cart">Add to Cart</button>
+              </form>
+              {% else %}
+              <p class="login-prompt">
+                <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
+              </p>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+      </div>
+
       <section class="watch-gallery">
         {% if show_top_section %}
         <div class="section-header">
@@ -268,6 +316,26 @@
             });
         }
 
+        // Update recommendations dynamically
+        function updateRecommendations() {
+            fetch('/api/recommendations-html')
+            .then(response => {
+                if (response.status === 204) {
+                    return '';
+                }
+                return response.text();
+            })
+            .then(html => {
+                const container = document.getElementById('recommendations-container');
+                if (container) {
+                    container.innerHTML = html;
+                    // Re-attach listeners to the new content
+                    attachListeners(container);
+                }
+            })
+            .catch(error => console.error('Error updating recommendations:', error));
+        }
+
         // AJAX add to cart functionality
         function handleAddToCart(form, watchId) {
             const button = form.querySelector('button[type="submit"]');
@@ -294,6 +362,9 @@
                         button.textContent = originalText;
                         button.disabled = false;
                     }, 1000);
+                    
+                    // Update recommendations since user interest changed
+                    updateRecommendations();
                 } else {
                     showToast(data.message || 'Failed to add to cart', 'error');
                     button.textContent = originalText;
@@ -308,40 +379,31 @@
             });
         }
 
-        // Initialize everything when DOM loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Initializing enhanced cart functionality...');
-            
-            // Handle add to cart forms with AJAX
-            const addToCartForms = document.querySelectorAll('.add-to-cart-form');
-            console.log('Found', addToCartForms.length, 'add to cart forms');
-            
+        function attachListeners(root) {
+            // Handle add to cart forms
+            const addToCartForms = root.querySelectorAll('.add-to-cart-form');
             addToCartForms.forEach(form => {
+                // Remove old listener to avoid duplicates if re-attaching (though typically we replace innerHTML so elements are new)
+                // cloning node removes listeners but here elements are new from innerHTML
                 form.addEventListener('submit', function(e) {
-                    e.preventDefault(); // Prevent default form submission
+                    e.preventDefault(); 
                     const watchId = form.dataset.watchId;
                     if (watchId) {
-                        // Track click and add to cart
                         trackWatchClick(parseInt(watchId));
                         handleAddToCart(form, watchId);
                     }
                 });
             });
-            
-            // Track clicks on watch images and titles (without adding to cart)
-            const images = document.querySelectorAll('.watch-card img, .top-product-card img, .watch-card h2, .top-product-card h3');
-            console.log('Found', images.length, 'clickable images/titles');
-            
+
+            // Track clicks on images/titles
+            const images = root.querySelectorAll('.watch-card img, .top-product-card img, .watch-card h2, .top-product-card h3');
             images.forEach(element => {
                 element.addEventListener('click', function() {
-                    console.log('Image/title clicked');
                     const watchCard = this.closest('.watch-card, .top-product-card');
                     if (watchCard) {
                         const addToCartForm = watchCard.querySelector('.add-to-cart-form');
                         if (addToCartForm) {
                             const watchId = addToCartForm.dataset.watchId;
-                            console.log('Extracted watch ID:', watchId);
-                            
                             if (watchId && !isNaN(watchId)) {
                                 trackWatchClick(parseInt(watchId));
                             }
@@ -349,6 +411,14 @@
                     }
                 });
             });
+        }
+
+        // Initialize everything when DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing enhanced cart functionality...');
+            
+            // Attach listeners to the whole document
+            attachListeners(document);
             
             console.log('Enhanced cart functionality initialization complete');
         });

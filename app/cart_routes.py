@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 from flask_login import login_required, current_user
 from app import db
-from app.models import CartItem, Watch
+from app.models import CartItem, Watch, WatchClick
 
 cart = Blueprint('cart', __name__)
 
@@ -17,6 +17,20 @@ def view_cart():
 def add_to_cart(watch_id):
     try:
         watch = Watch.query.get_or_404(watch_id)
+        
+        # Record interaction for recommendations (persistent history)
+        try:
+            click = WatchClick(
+                watch_id=watch_id,
+                user_id=current_user.id,
+                ip_address=request.remote_addr,
+                user_agent=request.headers.get('User-Agent'),
+                referrer=request.headers.get('Referer')
+            )
+            db.session.add(click)
+        except Exception as e:
+            print(f"Error recording click in add_to_cart: {e}")
+
         existing_item = CartItem.query.filter_by(user_id=current_user.id, product_id=watch_id).first()
         
         if existing_item:
