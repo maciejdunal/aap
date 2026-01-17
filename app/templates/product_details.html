@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ watch.name }} - Analytics Details</title>
+    <title>{{ product.name }} - Analytics Details</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -15,7 +15,7 @@
             </a>
         </div>
         <div class="search-bar">
-            <h1>📊 {{ watch.name }} Analytics</h1>
+            <h1>📊 {{ product.name }} Analytics</h1>
         </div>
         <div class="user-options">
             {% if current_user.is_authenticated %}
@@ -24,7 +24,7 @@
                 <button class="dropdown-btn">☰</button>
                 <div class="dropdown-content">
                     <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-                    <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+                    <a href="{{ url_for('main.my_products') }}">My Products</a>
                     <a href="{{ url_for('product.list_products') }}">Manage Products</a>
                     <a href="{{ url_for('reports.reports_dashboard') }}">Reports</a>
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
@@ -37,34 +37,34 @@
     <nav class="categories">
         <a href="{{ url_for('reports.reports_dashboard', days=days) }}" class="category-link">← Back to Reports</a>
         <div class="time-period-selector">
-            <a href="{{ url_for('reports.watch_details', watch_id=watch.id, days=7) }}" 
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=7) }}" 
                class="period-link {{ 'active' if days == 7 else '' }}">7 Days</a>
-            <a href="{{ url_for('reports.watch_details', watch_id=watch.id, days=30) }}" 
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=30) }}" 
                class="period-link {{ 'active' if days == 30 else '' }}">30 Days</a>
-            <a href="{{ url_for('reports.watch_details', watch_id=watch.id, days=90) }}" 
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=90) }}" 
                class="period-link {{ 'active' if days == 90 else '' }}">90 Days</a>
-            <a href="{{ url_for('reports.watch_details', watch_id=watch.id, days=365) }}" 
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=365) }}" 
                class="period-link {{ 'active' if days == 365 else '' }}">1 Year</a>
         </div>
     </nav>
 
-    <main class="watch-details-container">
-        <!-- Watch Overview -->
-        <section class="watch-overview">
-            <div class="watch-info">
-                <img src="{{ url_for('static', filename=watch.image_url) }}" 
-                     alt="{{ watch.name }}" 
-                     class="watch-main-image" />
-                <div class="watch-details-text">
-                    <h2>{{ watch.name }}</h2>
-                    <p class="brand">{{ watch.brand }}</p>
-                    <p class="price">${{ "%.2f"|format(watch.price) }}</p>
-                    <p class="description">{{ watch.description }}</p>
-                    <div class="watch-specs">
-                        {% if watch.color %}<span class="spec">{{ watch.color }}</span>{% endif %}
-                        {% if watch.material %}<span class="spec">{{ watch.material }}</span>{% endif %}
-                        {% if watch.purpose %}<span class="spec">{{ watch.purpose }}</span>{% endif %}
-                        <span class="spec category-{{ watch.category }}">{{ watch.category.title() }}</span>
+    <main class="product-details-container">
+        <!-- Product Overview -->
+        <section class="product-overview">
+            <div class="product-info">
+                <img src="{{ url_for('static', filename=product.image_url) }}" 
+                     alt="{{ product.name }}" 
+                     class="product-main-image" />
+                <div class="product-details-text">
+                    <h2>{{ product.name }}</h2>
+                    <p class="brand">{{ product.brand }}</p>
+                    <p class="price">${{ "%.2f"|format(product.price) }}</p>
+                    <p class="description">{{ product.description }}</p>
+                    <div class="product-specs">
+                        {% if product.color %}<span class="spec">{{ product.color }}</span>{% endif %}
+                        {% if product.material %}<span class="spec">{{ product.material }}</span>{% endif %}
+                        {% if product.purpose %}<span class="spec">{{ product.purpose }}</span>{% endif %}
+                        <span class="spec category-{{ product.category }}">{{ product.category.title() }}</span>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@
         <section class="no-data">
             <div class="no-data-icon">📊</div>
             <h3>No Click Data Available</h3>
-            <p>This watch hasn't been clicked in the selected time period.</p>
+            <p>This product hasn't been clicked in the selected time period.</p>
         </section>
         {% endif %}
     </main>
@@ -183,7 +183,7 @@
         </div>
         <div class="footer-info">
             <p>30-200 Cracow</p>
-            <p>Email: mdsupport@watchstore.com</p>
+            <p>Email: mdsupport@productstore.com</p>
             <p>Phone: +739 221 226</p>
         </div>
     </footer>

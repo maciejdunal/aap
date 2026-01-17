@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from app.models import User
 from app import db
+from flask import session
 
 auth = Blueprint('auth', __name__)
 
@@ -43,6 +44,8 @@ def register():
 @auth.route('/logout')
 @login_required
 def logout():
+    session.pop("chat_history", None)
+    session.pop("_chat_initialized", None)
     logout_user()
     return redirect(url_for('auth.login'))
 

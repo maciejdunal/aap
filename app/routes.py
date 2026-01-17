@@ -1,37 +1,39 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
-from app.models import Watch, OrderItem, Order, WatchClick, CartItem, db
+from app.models import Product, OrderItem, Order, ProductClick, CartItem, db
 from sqlalchemy import func, desc
 from datetime import datetime, timedelta, timezone
-
+from flask_login import current_user
+from app.recommender.collaborative import get_recommendations_for_user
+from app.models import Product
+from sqlalchemy import distinct
+from sqlalchemy import or_
+from app.recommender.bandit import get_ai_recommendations
+from flask import session
 main = Blueprint('main', __name__)
 
 def get_recommendations(limit=4):
     """Get product recommendations based on user's interested brands."""
     interested_brands = set()
-    
-    # Helper to extract brands
+
     def extract_brands(query_result):
         return {b[0] for b in query_result}
 
     if current_user.is_authenticated:
-        # Get brands from clicks for logged in user (by User ID)
-        user_click_brands = db.session.query(Watch.brand)\
-            .join(WatchClick, Watch.id == WatchClick.watch_id)\
-            .filter(WatchClick.user_id == current_user.id)\
+        user_click_brands = db.session.query(Product.brand)\
+            .join(ProductClick, Product.id == ProductClick.product_id)\
+            .filter(ProductClick.user_id == current_user.id)\
             .distinct().all()
         interested_brands.update(extract_brands(user_click_brands))
         
-        # Get brands from cart for logged in user
-        cart_brands = db.session.query(Watch.brand)\
-            .join(CartItem, Watch.id == CartItem.product_id)\
+        cart_brands = db.session.query(Product.brand)\
+            .join(CartItem, Product.id == CartItem.product_id)\
             .filter(CartItem.user_id == current_user.id)\
             .distinct().all()
         interested_brands.update(extract_brands(cart_brands))
 
-        # Get brands from past orders for logged in user (Purchase History)
-        order_brands = db.session.query(Watch.brand)\
-            .join(OrderItem, Watch.id == OrderItem.product_id)\
+        order_brands = db.session.query(Product.brand)\
+            .join(OrderItem, Product.id == OrderItem.product_id)\
             .join(Order, OrderItem.order_id == Order.id)\
             .filter(Order.user_id == current_user.id)\
             .distinct().all()
@@ -39,17 +41,16 @@ def get_recommendations(limit=4):
     else:
         ip_address = request.remote_addr
         
-        ip_click_brands = db.session.query(Watch.brand)\
-            .join(WatchClick, Watch.id == WatchClick.watch_id)\
-            .filter(WatchClick.ip_address == ip_address)\
+        ip_click_brands = db.session.query(Product.brand)\
+            .join(ProductClick, Product.id == ProductClick.product_id)\
+            .filter(ProductClick.ip_address == ip_address)\
             .distinct().all()
         interested_brands.update(extract_brands(ip_click_brands))
     
     if not interested_brands:
         return []
 
-    # Get products from these brands, Using random ordering to keep it fresh
-    recommended = Watch.query.filter(Watch.brand.in_(interested_brands))\
+    recommended = Product.query.filter(Product.brand.in_(interested_brands))\
         .order_by(func.random())\
         .limit(limit)\
         .all()
@@ -58,93 +59,125 @@ def get_recommendations(limit=4):
 
 @main.route('/api/recommendations-html')
 def get_recommendations_html():
-    """Get the HTML for the recommendations section."""
-    recommendations = get_recommendations(limit=4)
-    if not recommendations:
+
+    if not current_user.is_authenticated:
         return '', 204
-        
-    return render_template('partials/recommendations.html', recommendations=recommendations)
+
+    product_ids, strategy = get_ai_recommendations(
+        user_id=current_user.id,
+        limit=4
+    )
+    print(strategy)
+   
+    if not product_ids:
+        return '', 204
+
+    products = (
+        Product.query
+        .filter(Product.id.in_(product_ids))
+        .all()
+    )
+    
+    return render_template(
+        "partials/recommendations.html",
+        recommendations=products,
+        strategy=strategy
+    )
 
 def get_top_selling_products(limit=4, days=30):
     """Get top selling products based on sales in the last N days."""
     cutoff_date = datetime.now(timezone.utc) - timedelta(days=days)
     
-    # Query to get top selling products with sales count
     top_products = (
         db.session.query(
-            Watch,
+            Product,
             func.sum(OrderItem.quantity).label('total_sold'),
             func.count(OrderItem.id).label('order_count')
         )
-        .join(OrderItem, Watch.id == OrderItem.product_id)
+        .join(OrderItem, Product.id == OrderItem.product_id)
         .join(Order, OrderItem.order_id == Order.id)
         .filter(Order.date >= cutoff_date)
-        .group_by(Watch.id)
+        .group_by(Product.id)
         .order_by(desc('total_sold'))
         .limit(limit)
         .all()
     )
     
-    # If no sales in the specified period, return most recently added products
     if not top_products:
         fallback_products = (
-            Watch.query
-            .order_by(desc(Watch.id))  # Most recently added
+            Product.query
+            .order_by(desc(Product.id))
             .limit(limit)
             .all()
         )
-        # Format as tuples to match the expected structure
-        return [(watch, 0, 0) for watch in fallback_products]
+
+        return [(product, 0, 0) for product in fallback_products]
     
     return top_products
 
+from sqlalchemy import distinct
+
 @main.route('/')
 def index():
+
     category = request.args.get('category', 'all')
-    search_query = request.args.get('search', '').strip().lower()
+    search_query = request.args.get('search', '').strip()
     show_top = request.args.get('show_top', 'true').lower() == 'true'
 
-    # Get top selling products for the main display
-    top_products = get_top_selling_products(limit=4, days=30) if show_top and not search_query and category == 'all' else []
-    
-    # Get regular products based on filters
-    if category == 'all':
-        watches = Watch.query
-    elif category == 'men':
-        watches = Watch.query.filter_by(sex='male')
-    elif category == 'women':
-        watches = Watch.query.filter_by(sex='female')
-    elif category == 'luxury':
-        watches = Watch.query.filter_by(category='luxury')
-    elif category == 'sport':
-        watches = Watch.query.filter_by(category='sport')
-    else:
-        watches = Watch.query
+    categories = [
+        c[0] for c in
+        db.session.query(distinct(Product.category))
+        .filter(Product.category.isnot(None))
+        .order_by(Product.category)
+        .all()
+    ]
+
+    products_query = Product.query
+
+    if category != 'all':
+        products_query = products_query.filter(Product.category == category)
 
     if search_query:
-        watches = watches.filter(Watch.brand.ilike(f'%{search_query}%'))
+        from sqlalchemy import or_
+        products_query = products_query.filter(
+            or_(
+                Product.name.ilike(f'%{search_query}%'),
+                Product.brand.ilike(f'%{search_query}%'),
+                Product.description.ilike(f'%{search_query}%')
+            )
+        )
 
-    watches = watches.all()
-    
-    # Get recommendations for the initial page load
-    recommendations = get_recommendations(limit=4)
+    products = products_query.all()
 
-    return render_template('index.html', 
-                         watches=watches, 
-                         top_products=top_products,
-                         show_top_section=bool(top_products),
-                         recommendations=recommendations)
+    top_products = []
+    if show_top and not search_query and category == 'all':
+        top_products = get_top_selling_products(limit=4, days=30)
 
-@main.route('/my-watches')
+    recommendations = []
+    if not search_query and category == 'all':
+        recommendations = get_recommendations(limit=4)
+
+    return render_template(
+        'index.html',
+        products=products,
+        categories=categories,
+        selected_category=category,
+        top_products=top_products,
+        show_top_section=show_top,
+        recommendations=recommendations
+    )
+
+
+@main.route('/my-products')
 @login_required
-def my_watches():
+def my_products():
 
-    bought_watches = (
-        Watch.query
-        .join(OrderItem, Watch.id == OrderItem.product_id)
+    bought_products = (
+        Product.query
+        .join(OrderItem, Product.id == OrderItem.product_id)
         .join(OrderItem.order)
         .filter(OrderItem.order.has(user_id=current_user.id))
         .all()
     )
 
-    return render_template('my_watches.html', watches=bought_watches)
+    return render_template('my_products.html', products=bought_products)

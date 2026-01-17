@@ -4,7 +4,7 @@ Run this to add some sample clicks to see the reports feature in action
 """
 
 from app import create_app, db
-from app.models import Watch, WatchClick, User
+from app.models import Product, ProductClick, User
 from datetime import datetime, timedelta, timezone
 import random
 
@@ -13,14 +13,14 @@ def seed_click_data():
     app = create_app()
     
     with app.app_context():
-        watches = Watch.query.all()
+        products = Product.query.all()
         users = User.query.all()
         
-        if not watches:
-            print("❌ No watches found. Run seed.py first to create watches.")
+        if not products:
+            print("❌ No products found. Run seed.py first to create products.")
             return
         
-        print(f"Found {len(watches)} watches and {len(users)} users")
+        print(f"Found {len(products)} products and {len(users)} users")
         print("Seeding fake click data...")
         
         # Generate clicks over the last 30 days
@@ -34,9 +34,9 @@ def seed_click_data():
             num_clicks = random.randint(1, 10)
             
             for _ in range(num_clicks):
-                # Pick a random watch (with bias toward first few watches)
-                watch_weights = [max(1, len(watches) - i) for i in range(len(watches))]
-                watch = random.choices(watches, weights=watch_weights)[0]
+                # Pick a random product (with bias toward first few products)
+                product_weights = [max(1, len(products) - i) for i in range(len(products))]
+                product = random.choices(products, weights=product_weights)[0]
                 
                 # Sometimes use authenticated user, sometimes anonymous
                 user = random.choice(users) if users and random.random() < 0.6 else None
@@ -45,8 +45,8 @@ def seed_click_data():
                 hours_offset = random.uniform(0, 24)
                 click_time = date - timedelta(hours=hours_offset)
                 
-                click = WatchClick(
-                    watch_id=watch.id,
+                click = ProductClick(
+                    product_id=product.id,
                     user_id=user.id if user else None,
                     ip_address=f"192.168.1.{random.randint(1, 255)}",
                     timestamp=click_time,
@@ -75,24 +75,24 @@ def seed_click_data():
         
         # Show summary
         from sqlalchemy import func, desc
-        top_watches = (
+        top_products = (
             db.session.query(
-                Watch.name,
-                Watch.brand,
-                func.count(WatchClick.id).label('clicks')
+                Product.name,
+                Product.brand,
+                func.count(ProductClick.id).label('clicks')
             )
-            .join(WatchClick, Watch.id == WatchClick.watch_id)
-            .group_by(Watch.id)
+            .join(ProductClick, product.id == ProductClick.product_id)
+            .group_by(Product.id)
             .order_by(desc('clicks'))
             .limit(5)
             .all()
         )
         
-        print("\nTop 5 most clicked watches:")
-        for i, (name, brand, clicks) in enumerate(top_watches, 1):
+        print("\nTop 5 most clicked products:")
+        for i, (name, brand, clicks) in enumerate(top_products, 1):
             print(f"{i}. {name} ({brand}) - {clicks} clicks")
         
-        total_clicks = WatchClick.query.count()
+        total_clicks = ProductClick.query.count()
         print(f"\nTotal clicks in database: {total_clicks}")
         print("\n🎉 You can now visit /reports to see the analytics dashboard!")
 

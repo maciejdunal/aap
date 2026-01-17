@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from flask_login import login_required
-from app.models import Watch, db
+from app.models import Product, db
 
 product = Blueprint('product', __name__)
 
@@ -8,40 +8,40 @@ product = Blueprint('product', __name__)
 @login_required
 def list_products():
     """List all products for management."""
-    watches = Watch.query.all()
-    return render_template('products_list.html', watches=watches)
+    products = Product.query.all()
+    return render_template('products_list.html', products=products)
 
 @product.route('/product/edit/<int:product_id>')
 @login_required
 def edit_product(product_id):
     """Display edit form for a product."""
-    watch = db.session.get(Watch, product_id)
-    if watch is None:
+    product = db.session.get(Product, product_id)
+    if product is None:
         abort(404)
-    return render_template('edit_product.html', watch=watch)
+    return render_template('edit_product.html', product=product)
 
 @product.route('/product/edit/<int:product_id>', methods=['POST'])
 @login_required
 def update_product(product_id):
     """Update product details."""
-    watch = db.session.get(Watch, product_id)
-    if watch is None:
+    product = db.session.get(Products, product_id)
+    if product is None:
         abort(404)
     
     try:
         # Update basic fields
-        watch.name = request.form.get('name', watch.name)
-        watch.brand = request.form.get('brand', watch.brand)
-        watch.price = float(request.form.get('price', watch.price))
-        watch.description = request.form.get('description', watch.description)
-        watch.image_url = request.form.get('image_url', watch.image_url)
-        watch.sex = request.form.get('sex', watch.sex)
-        watch.category = request.form.get('category', watch.category)
+        product.name = request.form.get('name', product.name)
+        product.brand = request.form.get('brand', product.brand)
+        product.price = float(request.form.get('price', product.price))
+        product.description = request.form.get('description', product.description)
+        product.image_url = request.form.get('image_url', product.image_url)
+        product.sex = request.form.get('sex', product.sex)
+        product.category = request.form.get('category', product.category)
         
         # Update new fields
-        watch.color = request.form.get('color', watch.color)
-        watch.material = request.form.get('material', watch.material)
-        watch.purpose = request.form.get('purpose', watch.purpose)
+        product.color = request.form.get('color', product.color)
+        product.material = request.form.get('material', product.material)
+        product.purpose = request.form.get('purpose', product.purpose)
         
         db.session.commit()
         flash('Product updated successfully!', 'success')
@@ -66,7 +66,7 @@ def new_product():
 def create_product():
     """Create a new product."""
     try:
-        new_watch = Watch(
+        new_product = Product(
             name=request.form['name'],
             brand=request.form['brand'],
             price=float(request.form['price']),
@@ -79,7 +79,7 @@ def create_product():
             purpose=request.form.get('purpose')
         )
         
-        db.session.add(new_watch)
+        db.session.add(new_product)
         db.session.commit()
         flash('Product created successfully!', 'success')
         return redirect(url_for('product.list_products'))
@@ -95,12 +95,12 @@ def create_product():
 @login_required
 def delete_product(product_id):
     """Delete a product."""
-    watch = db.session.get(Watch, product_id)
-    if watch is None:
+    product = db.session.get(Product, product_id)
+    if product is None:
         abort(404)
     
     try:
-        db.session.delete(watch)
+        db.session.delete(product)
         db.session.commit()
         flash('Product deleted successfully!', 'success')
     except Exception as e:

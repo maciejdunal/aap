@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add New Product - Watch Store</title>
+    <title>Add New Product - Product Store</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body>
@@ -23,7 +23,7 @@
                 <button class="dropdown-btn">☰</button>
                 <div class="dropdown-content">
                     <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-                    <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+                    <a href="{{ url_for('main.my_products') }}">My Products</a>
                     <a href="{{ url_for('product.list_products') }}">Manage Products</a>
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
                 </div>
@@ -125,7 +125,7 @@
         </div>
         <div class="footer-info">
             <p>30-200 Cracow</p>
-            <p>Email: mdsupport@watchstore.com</p>
+            <p>Email: mdsupport@productstore.com</p>
             <p>Phone: +739 221 226</p>
             <p>Fax: +123 456 780</p>
         </div>

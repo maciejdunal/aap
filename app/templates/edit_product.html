@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Product - Watch Store</title>
+    <title>Edit Product - Product Store</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body>
@@ -23,7 +23,7 @@
                 <button class="dropdown-btn">☰</button>
                 <div class="dropdown-content">
                     <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-                    <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+                    <a href="{{ url_for('main.my_products') }}">My Products</a>
                     <a href="{{ url_for('product.list_products') }}">Manage Products</a>
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
                 </div>
@@ -47,26 +47,26 @@
 
         <section class="product-form">
             <div class="form-container">
-                <form method="POST" action="{{ url_for('product.update_product', product_id=watch.id) }}">
+                <form method="POST" action="{{ url_for('product.update_product', product_id=product.id) }}">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Product Name *</label>
-                            <input type="text" id="name" name="name" value="{{ watch.name }}" required />
+                            <input type="text" id="name" name="name" value="{{ product.name }}" required />
                         </div>
                         <div class="form-group">
                             <label for="brand">Brand *</label>
-                            <input type="text" id="brand" name="brand" value="{{ watch.brand }}" required />
+                            <input type="text" id="brand" name="brand" value="{{ product.brand }}" required />
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="price">Price *</label>
-                            <input type="number" id="price" name="price" value="{{ watch.price }}" step="0.01" min="0" required />
+                            <input type="number" id="price" name="price" value="{{ product.price }}" step="0.01" min="0" required />
                         </div>
                         <div class="form-group">
                             <label for="image_url">Image URL *</label>
-                            <input type="text" id="image_url" name="image_url" value="{{ watch.image_url }}" required />
+                            <input type="text" id="image_url" name="image_url" value="{{ product.image_url }}" required />
                         </div>
                     </div>
 
@@ -74,15 +74,15 @@
                         <div class="form-group">
                             <label for="sex">Sex *</label>
                             <select id="sex" name="sex" required>
-                                <option value="male" {% if watch.sex == 'male' %}selected{% endif %}>Male</option>
-                                <option value="female" {% if watch.sex == 'female' %}selected{% endif %}>Female</option>
+                                <option value="male" {% if product.sex == 'male' %}selected{% endif %}>Male</option>
+                                <option value="female" {% if product.sex == 'female' %}selected{% endif %}>Female</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="category">Category *</label>
                             <select id="category" name="category" required>
-                                <option value="sport" {% if watch.category == 'sport' %}selected{% endif %}>Sport</option>
-                                <option value="luxury" {% if watch.category == 'luxury' %}selected{% endif %}>Luxury</option>
+                                <option value="sport" {% if product.category == 'sport' %}selected{% endif %}>Sport</option>
+                                <option value="luxury" {% if product.category == 'luxury' %}selected{% endif %}>Luxury</option>
                             </select>
                         </div>
                     </div>
@@ -90,22 +90,22 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="color">Color</label>
-                            <input type="text" id="color" name="color" value="{{ watch.color or '' }}" placeholder="e.g., Black, Silver, Gold" />
+                            <input type="text" id="color" name="color" value="{{ product.color or '' }}" placeholder="e.g., Black, Silver, Gold" />
                         </div>
                         <div class="form-group">
                             <label for="material">Material</label>
-                            <input type="text" id="material" name="material" value="{{ watch.material or '' }}" placeholder="e.g., Stainless Steel, Leather, Titanium" />
+                            <input type="text" id="material" name="material" value="{{ product.material or '' }}" placeholder="e.g., Stainless Steel, Leather, Titanium" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="purpose">Purpose</label>
-                        <input type="text" id="purpose" name="purpose" value="{{ watch.purpose or '' }}" placeholder="e.g., Diving, Running, Dress, Casual" />
+                        <input type="text" id="purpose" name="purpose" value="{{ product.purpose or '' }}" placeholder="e.g., Diving, Running, Dress, Casual" />
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description *</label>
-                        <textarea id="description" name="description" rows="4" required>{{ watch.description }}</textarea>
+                        <textarea id="description" name="description" rows="4" required>{{ product.description }}</textarea>
                     </div>
 
                     <div class="form-actions">
@@ -123,7 +123,7 @@
         </div>
         <div class="footer-info">
             <p>30-200 Cracow</p>
-            <p>Email: mdsupport@watchstore.com</p>
+            <p>Email: mdsupport@productstore.com</p>
             <p>Phone: +739 221 226</p>
             <p>Fax: +123 456 780</p>
         </div>

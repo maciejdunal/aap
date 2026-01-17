@@ -21,7 +21,7 @@
           <input
             type="text"
             name="search"
-            placeholder="Search for watches..."
+            placeholder="Search for products..."
           />
           <button type="submit">Search</button>
         </form>
@@ -33,7 +33,7 @@
           <button class="dropdown-btn">☰</button>
           <div class="dropdown-content">
             <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-            <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+            <a href="{{ url_for('main.my_products') }}">My Products</a>
             <a href="{{ url_for('auth.logout') }}">Logout</a>
           </div>
         </div>
@@ -87,7 +87,7 @@
     </main>
 
     <footer class="footer">
-      <p>Contact: support@watchstore.com</p>
+      <p>Contact: support@productstore.com</p>
     </footer>
   </body>
 </html>

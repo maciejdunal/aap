@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analytics Reports - Watch Store</title>
+    <title>Analytics Reports - Product Store</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -24,7 +24,7 @@
                 <button class="dropdown-btn">☰</button>
                 <div class="dropdown-content">
                     <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-                    <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+                    <a href="{{ url_for('main.my_products') }}">My Products</a>
                     <a href="{{ url_for('product.list_products') }}">Manage Products</a>
                     <a href="{{ url_for('reports.reports_dashboard') }}">Reports</a>
                     <a href="{{ url_for('auth.logout') }}">Logout</a>
@@ -64,9 +64,9 @@
             <div class="stat-card">
                 <div class="stat-icon">⌚</div>
                 <div class="stat-content">
-                    <h3>{{ unique_watches_clicked }}</h3>
-                    <p>Watches Clicked</p>
-                    <small>Out of {{ total_watches }} total</small>
+                    <h3>{{ unique_products_clicked }}</h3>
+                    <p>Products Clicked</p>
+                    <small>Out of {{ total_products }} total</small>
                 </div>
             </div>
             
@@ -82,7 +82,7 @@
             <div class="stat-card">
                 <div class="stat-icon">🎯</div>
                 <div class="stat-content">
-                    <h3>{{ "%.1f"|format((unique_watches_clicked / total_watches * 100) if total_watches > 0 else 0) }}%</h3>
+                    <h3>{{ "%.1f"|format((unique_products_clicked / total_products * 100) if total_products > 0 else 0) }}%</h3>
                     <p>Catalog Coverage</p>
                     <small>Products with clicks</small>
                 </div>
@@ -99,9 +99,9 @@
         </section>
         {% endif %}
 
-        <!-- Most Clicked Watches Table -->
+        <!-- Most Clicked product Table -->
         <section class="most-clicked-section">
-            <h2>🏆 Most Clicked Watches (Last {{ days }} Days)</h2>
+            <h2>🏆 Most Clicked Product (Last {{ days }} Days)</h2>
             
             {% if most_clicked %}
             <div class="table-container">
@@ -110,7 +110,7 @@
                         <tr>
                             <th>Rank</th>
                             <th>Image</th>
-                            <th>Watch</th>
+                            <th>Product</th>
                             <th>Brand</th>
                             <th>Category</th>
                             <th>Price</th>
@@ -121,35 +121,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for watch_data in most_clicked %}
-                        {% set watch = watch_data[0] %}
-                        {% set click_count = watch_data[1] %}
-                        {% set unique_users = watch_data[2] %}
-                        {% set unique_ips = watch_data[3] %}
+                        {% for product_data in most_clicked %}
+                        {% set product = product_data[0] %}
+                        {% set click_count = product_data[1] %}
+                        {% set unique_users = product_data[2] %}
+                        {% set unique_ips = product_data[3] %}
                         <tr>
                             <td class="rank-cell">
                                 <span class="rank-badge rank-{{ loop.index }}">#{{ loop.index }}</span>
                             </td>
                             <td>
-                                <img src="{{ url_for('static', filename=watch.image_url) }}" 
-                                     alt="{{ watch.name }}" 
-                                     class="watch-thumbnail" />
+                                <img src="{{ url_for('static', filename=product.image_url) }}" 
+                                     alt="{{ product.name }}" 
+                                     class="product-thumbnail" />
                             </td>
-                            <td class="watch-name">{{ watch.name }}</td>
-                            <td>{{ watch.brand }}</td>
+                            <td class="product-name">{{ product.name }}</td>
+                            <td>{{ product.brand }}</td>
                             <td>
-                                <span class="category-badge category-{{ watch.category }}">
-                                    {{ watch.category.title() }}
+                                <span class="category-badge category-{{ product.category }}">
+                                    {{ product.category.title() }}
                                 </span>
                             </td>
-                            <td class="price">${{ "%.2f"|format(watch.price) }}</td>
+                            <td class="price">${{ "%.2f"|format(product.price) }}</td>
                             <td class="click-count">
                                 <strong>{{ click_count }}</strong>
                             </td>
                             <td class="unique-count">{{ unique_users }}</td>
                             <td class="unique-count">{{ unique_ips }}</td>
                             <td class="actions">
-                                <a href="{{ url_for('reports.watch_details', watch_id=watch.id, days=days) }}" 
+                                <a href="{{ url_for('reports.product_details', product_id=product.id, days=days) }}" 
                                    class="btn-details">View Details</a>
                             </td>
                         </tr>
@@ -161,7 +161,7 @@
             <div class="no-data">
                 <div class="no-data-icon">📊</div>
                 <h3>No Click Data Available</h3>
-                <p>No watches have been clicked in the selected time period.</p>
+                <p>No products have been clicked in the selected time period.</p>
                 <p>Try selecting a longer time period or wait for more user activity.</p>
             </div>
             {% endif %}
@@ -174,7 +174,7 @@
         </div>
         <div class="footer-info">
             <p>30-200 Cracow</p>
-            <p>Email: mdsupport@watchstore.com</p>
+            <p>Email: mdsupport@productstore.com</p>
             <p>Phone: +739 221 226</p>
         </div>
     </footer>
