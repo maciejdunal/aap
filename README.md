@@ -1,8 +1,8 @@
-# Watch Store E-commerce Application
+# Product Store E-commerce Application
 
 ## Opis aplikacji
 
-Projekt **Watch Store** to prosta aplikacja e-commerce umożliwiająca zakup zegarków online.  
+Projekt **Product Store** to prosta aplikacja e-commerce umożliwiająca zakup produktów online.  
 Pozwala użytkownikom na:
 
 - **Rejestrację i logowanie**
