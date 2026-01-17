@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics Reports - Product Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('main.index') }}">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+            </a>
+        </div>
+        <div class="search-bar">
+            <h1>📊 Analytics Reports</h1>
+        </div>
+        <div class="user-options">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('cart.view_cart') }}">Cart</a>
+            <div class="dropdown">
+                <button class="dropdown-btn">☰</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
+                    <a href="{{ url_for('main.my_products') }}">My Products</a>
+                    <a href="{{ url_for('product.list_products') }}">Manage Products</a>
+                    <a href="{{ url_for('reports.reports_dashboard') }}">Reports</a>
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <nav class="categories">
+        <a href="{{ url_for('main.index') }}" class="category-link">← Back to Store</a>
+        <div class="time-period-selector">
+            <a href="{{ url_for('reports.reports_dashboard', days=7) }}" 
+               class="period-link {{ 'active' if days == 7 else '' }}">7 Days</a>
+            <a href="{{ url_for('reports.reports_dashboard', days=30) }}" 
+               class="period-link {{ 'active' if days == 30 else '' }}">30 Days</a>
+            <a href="{{ url_for('reports.reports_dashboard', days=90) }}" 
+               class="period-link {{ 'active' if days == 90 else '' }}">90 Days</a>
+            <a href="{{ url_for('reports.reports_dashboard', days=365) }}" 
+               class="period-link {{ 'active' if days == 365 else '' }}">1 Year</a>
+        </div>
+        <a href="{{ url_for('reports.export_reports', days=days) }}" class="export-link">📥 Export Data</a>
+    </nav>
+
+    <main class="reports-container">
+        <!-- Summary Statistics -->
+        <section class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-icon">👆</div>
+                <div class="stat-content">
+                    <h3>{{ total_clicks }}</h3>
+                    <p>Total Clicks</p>
+                    <small>Last {{ days }} days</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">⌚</div>
+                <div class="stat-content">
+                    <h3>{{ unique_products_clicked }}</h3>
+                    <p>Products Clicked</p>
+                    <small>Out of {{ total_products }} total</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-content">
+                    <h3>{{ "%.1f"|format((total_clicks / days) if days > 0 else 0) }}</h3>
+                    <p>Avg Clicks/Day</p>
+                    <small>In selected period</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-content">
+                    <h3>{{ "%.1f"|format((unique_products_clicked / total_products * 100) if total_products > 0 else 0) }}%</h3>
+                    <p>Catalog Coverage</p>
+                    <small>Products with clicks</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Click Trends Chart -->
+        {% if daily_trends %}
+        <section class="chart-section">
+            <h2>📊 Daily Click Trends</h2>
+            <div class="chart-container">
+                <canvas id="trendsChart"></canvas>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Most Clicked product Table -->
+        <section class="most-clicked-section">
+            <h2>🏆 Most Clicked Product (Last {{ days }} Days)</h2>
+            
+            {% if most_clicked %}
+            <div class="table-container">
+                <table class="reports-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Brand</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Total Clicks</th>
+                            <th>Unique Users</th>
+                            <th>Unique IPs</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product_data in most_clicked %}
+                        {% set product = product_data[0] %}
+                        {% set click_count = product_data[1] %}
+                        {% set unique_users = product_data[2] %}
+                        {% set unique_ips = product_data[3] %}
+                        <tr>
+                            <td class="rank-cell">
+                                <span class="rank-badge rank-{{ loop.index }}">#{{ loop.index }}</span>
+                            </td>
+                            <td>
+                                <img src="{{ url_for('static', filename=product.image_url) }}" 
+                                     alt="{{ product.name }}" 
+                                     class="product-thumbnail" />
+                            </td>
+                            <td class="product-name">{{ product.name }}</td>
+                            <td>{{ product.brand }}</td>
+                            <td>
+                                <span class="category-badge category-{{ product.category }}">
+                                    {{ product.category.title() }}
+                                </span>
+                            </td>
+                            <td class="price">${{ "%.2f"|format(product.price) }}</td>
+                            <td class="click-count">
+                                <strong>{{ click_count }}</strong>
+                            </td>
+                            <td class="unique-count">{{ unique_users }}</td>
+                            <td class="unique-count">{{ unique_ips }}</td>
+                            <td class="actions">
+                                <a href="{{ url_for('reports.product_details', product_id=product.id, days=days) }}" 
+                                   class="btn-details">View Details</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="no-data">
+                <div class="no-data-icon">📊</div>
+                <h3>No Click Data Available</h3>
+                <p>No products have been clicked in the selected time period.</p>
+                <p>Try selecting a longer time period or wait for more user activity.</p>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+        </div>
+        <div class="footer-info">
+            <p>30-200 Cracow</p>
+            <p>Email: mdsupport@productstore.com</p>
+            <p>Phone: +739 221 226</p>
+        </div>
+    </footer>
+
+    <script>
+        // Render daily trends chart
+        {% if daily_trends %}
+        const trendsData = {{ daily_trends | tojson }};
+        const ctx = document.getElementById('trendsChart').getContext('2d');
+        
+        const dates = Object.keys(trendsData).sort();
+        const clicks = dates.map(date => trendsData[date] || 0);
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates.map(date => {
+                    const d = new Date(date);
+                    return d.toLocaleDateString();
+                }),
+                datasets: [{
+                    label: 'Daily Clicks',
+                    data: clicks,
+                    borderColor: '#007bff',
+                    backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+        {% endif %}
+    </script>
+</body>
+</html>

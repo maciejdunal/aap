@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ product.name }} - Analytics Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('main.index') }}">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+            </a>
+        </div>
+        <div class="search-bar">
+            <h1>📊 {{ product.name }} Analytics</h1>
+        </div>
+        <div class="user-options">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('cart.view_cart') }}">Cart</a>
+            <div class="dropdown">
+                <button class="dropdown-btn">☰</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
+                    <a href="{{ url_for('main.my_products') }}">My Products</a>
+                    <a href="{{ url_for('product.list_products') }}">Manage Products</a>
+                    <a href="{{ url_for('reports.reports_dashboard') }}">Reports</a>
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <nav class="categories">
+        <a href="{{ url_for('reports.reports_dashboard', days=days) }}" class="category-link">← Back to Reports</a>
+        <div class="time-period-selector">
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=7) }}" 
+               class="period-link {{ 'active' if days == 7 else '' }}">7 Days</a>
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=30) }}" 
+               class="period-link {{ 'active' if days == 30 else '' }}">30 Days</a>
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=90) }}" 
+               class="period-link {{ 'active' if days == 90 else '' }}">90 Days</a>
+            <a href="{{ url_for('reports.product_details', product_id=product.id, days=365) }}" 
+               class="period-link {{ 'active' if days == 365 else '' }}">1 Year</a>
+        </div>
+    </nav>
+
+    <main class="product-details-container">
+        <!-- Product Overview -->
+        <section class="product-overview">
+            <div class="product-info">
+                <img src="{{ url_for('static', filename=product.image_url) }}" 
+                     alt="{{ product.name }}" 
+                     class="product-main-image" />
+                <div class="product-details-text">
+                    <h2>{{ product.name }}</h2>
+                    <p class="brand">{{ product.brand }}</p>
+                    <p class="price">${{ "%.2f"|format(product.price) }}</p>
+                    <p class="description">{{ product.description }}</p>
+                    <div class="product-specs">
+                        {% if product.color %}<span class="spec">{{ product.color }}</span>{% endif %}
+                        {% if product.material %}<span class="spec">{{ product.material }}</span>{% endif %}
+                        {% if product.purpose %}<span class="spec">{{ product.purpose }}</span>{% endif %}
+                        <span class="spec category-{{ product.category }}">{{ product.category.title() }}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Summary -->
+        <section class="analytics-summary">
+            <div class="stat-card">
+                <div class="stat-icon">👆</div>
+                <div class="stat-content">
+                    <h3>{{ total_clicks }}</h3>
+                    <p>Total Clicks</p>
+                    <small>Last {{ days }} days</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">👤</div>
+                <div class="stat-content">
+                    <h3>{{ unique_users }}</h3>
+                    <p>Unique Users</p>
+                    <small>Registered users</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🌐</div>
+                <div class="stat-content">
+                    <h3>{{ unique_ips }}</h3>
+                    <p>Unique IPs</p>
+                    <small>Including anonymous</small>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-content">
+                    <h3>{{ "%.1f"|format((total_clicks / days) if days > 0 else 0) }}</h3>
+                    <p>Avg Clicks/Day</p>
+                    <small>In selected period</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hourly Distribution Chart -->
+        {% if hourly_clicks %}
+        <section class="chart-section">
+            <h2>🕐 Hourly Click Distribution</h2>
+            <div class="chart-container">
+                <canvas id="hourlyChart"></canvas>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Recent Clicks -->
+        {% if recent_clicks %}
+        <section class="recent-clicks-section">
+            <h2>📝 Recent Click Activity</h2>
+            <div class="table-container">
+                <table class="reports-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>User</th>
+                            <th>IP Address</th>
+                            <th>User Agent</th>
+                            <th>Referrer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for click in recent_clicks %}
+                        <tr>
+                            <td class="timestamp">
+                                {{ click.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                            </td>
+                            <td class="user">
+                                {% if click.user_id %}
+                                    <span class="user-badge">User #{{ click.user_id }}</span>
+                                {% else %}
+                                    <span class="anonymous-badge">Anonymous</span>
+                                {% endif %}
+                            </td>
+                            <td class="ip">
+                                {{ click.ip_address[:8] + '...' if click.ip_address else 'N/A' }}
+                            </td>
+                            <td class="user-agent">
+                                {{ click.user_agent[:50] + '...' if click.user_agent and click.user_agent|length > 50 else (click.user_agent or 'N/A') }}
+                            </td>
+                            <td class="referrer">
+                                {% if click.referrer %}
+                                    <a href="{{ click.referrer }}" target="_blank" class="referrer-link">
+                                        {{ click.referrer[:30] + '...' if click.referrer|length > 30 else click.referrer }}
+                                    </a>
+                                {% else %}
+                                    Direct
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        {% else %}
+        <section class="no-data">
+            <div class="no-data-icon">📊</div>
+            <h3>No Click Data Available</h3>
+            <p>This product hasn't been clicked in the selected time period.</p>
+        </section>
+        {% endif %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" />
+        </div>
+        <div class="footer-info">
+            <p>30-200 Cracow</p>
+            <p>Email: mdsupport@productstore.com</p>
+            <p>Phone: +739 221 226</p>
+        </div>
+    </footer>
+
+    <script>
+        // Render hourly distribution chart
+        {% if hourly_clicks %}
+        const hourlyData = {{ hourly_clicks | tojson }};
+        const hourlyCtx = document.getElementById('hourlyChart').getContext('2d');
+        
+        const hours = Array.from({length: 24}, (_, i) => i);
+        const hourlyClicks = hours.map(hour => hourlyData[hour] || 0);
+        
+        new Chart(hourlyCtx, {
+            type: 'bar',
+            data: {
+                labels: hours.map(hour => `${hour}:00`),
+                datasets: [{
+                    label: 'Clicks by Hour',
+                    data: hourlyClicks,
+                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                    borderColor: '#007bff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Hour of Day'
+                        }
+                    }
+                }
+            }
+        });
+        {% endif %}
+    </script>
+</body>
+</html>

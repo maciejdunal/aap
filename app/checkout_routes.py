@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app.models import Order, OrderItem, db
 from datetime import datetime
+from flask import session
+from app.recommender.bandit import bandit
 
 checkout = Blueprint('checkout', __name__)
 
@@ -34,7 +36,7 @@ def process_checkout():
 
 
         db.session.add(order_item)
-        total_price += item.quantity * item.watch.price
+        total_price += item.quantity * item.product.price
 
     new_order.total_price = total_price
     db.session.commit()
@@ -43,6 +45,11 @@ def process_checkout():
         db.session.delete(item)
 
     db.session.commit()
-
+    for item in cart_items:
+        if item.source_strategy:
+            bandit.update(
+                item.source_strategy,
+                reward=5 * item.quantity
+            )
     flash("Order placed successfully!", "success")
     return redirect(url_for('orders.view_orders'))

@@ -46,10 +46,10 @@
           </td>
 
           <tr>
-            <td>{{ item.watch.name }}</td>
+            <td>{{ item.product.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td>${{ "%.2f"|format(item.watch.price) }}</td>
-            <td>${{ "%.2f"|format(item.quantity * item.watch.price) }}</td>
+            <td>${{ "%.2f"|format(item.product.price) }}</td>
+            <td>${{ "%.2f"|format(item.quantity * item.product.price) }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -66,7 +66,7 @@
       </div>
       <div class="footer-info">
         <p>30-200 Cracow</p>
-        <p>Email: mdsupport@watchstore.com</p>
+        <p>Email: mdsupport@productstore.com</p>
         <p>Phone: +739 221 226</p>
       </div>
     </footer>

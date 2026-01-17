@@ -1,0 +1,2669 @@
+{
+  "products": [
+    {
+      "Id": 1,
+      "Brand": "Samsung",
+      "Name": "Galaxy Book 3 (Ryzen 5 7520U, 32GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 3399
+    },
+    {
+      "Id": 2,
+      "Brand": "Apple",
+      "Name": "MacBook Air 13 14 (Ryzen 5 7520U, 8GB, 512GB SSD, 17.3\" OLED)",
+      "Category": "Laptopy",
+      "PricePLN": 12599
+    },
+    {
+      "Id": 3,
+      "Brand": "Gigabyte",
+      "Name": "G5 13 (Core i5-1335U, 64GB, 1024GB SSD, 14\" 4K)",
+      "Category": "Laptopy",
+      "PricePLN": 5449
+    },
+    {
+      "Id": 4,
+      "Brand": "ASUS",
+      "Name": "VivoBook 16 (Core Ultra 7 155H, zintegrowana, 8GB, 1024GB SSD, 17.3\" QHD 120Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 10609
+    },
+    {
+      "Id": 5,
+      "Brand": "Apple",
+      "Name": "MacBook Air 13 17 (M3, 32GB, 1024GB SSD, 14\" FHD)",
+      "Category": "Laptopy",
+      "PricePLN": 6609
+    },
+    {
+      "Id": 6,
+      "Brand": "HP",
+      "Name": "Pavilion 14 (Core Ultra 7 155H, 32GB, 2048GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 6299
+    },
+    {
+      "Id": 7,
+      "Brand": "Samsung",
+      "Name": "Galaxy Book 3 (Ryzen 7 7840U, 16GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 5599
+    },
+    {
+      "Id": 8,
+      "Brand": "MSI",
+      "Name": "Katana 15 (Core i5-1335U, 8GB, 1024GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 7009
+    },
+    {
+      "Id": 9,
+      "Brand": "Samsung",
+      "Name": "Galaxy Book 4 (Core Ultra 7 155H, 64GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 6299
+    },
+    {
+      "Id": 10,
+      "Brand": "Huawei",
+      "Name": "MateBook 14 14 (Core Ultra 7 155H, 32GB, 512GB SSD, 17.3\" 4K)",
+      "Category": "Laptopy",
+      "PricePLN": 4499
+    },
+    {
+      "Id": 11,
+      "Brand": "Acer",
+      "Name": "Predator Helios 17 (Ryzen 7 7730U, 64GB, 2048GB SSD, 16\" OLED)",
+      "Category": "Laptopy",
+      "PricePLN": 3799
+    },
+    {
+      "Id": 12,
+      "Brand": "Gigabyte",
+      "Name": "G5 (Core Ultra 5 125H, 8GB, 1024GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 6299
+    },
+    {
+      "Id": 13,
+      "Brand": "LG",
+      "Name": "gram 14 17 (M3, 8GB, 1024GB SSD, 17.3\" WUXGA)",
+      "Category": "Laptopy",
+      "PricePLN": 10799
+    },
+    {
+      "Id": 14,
+      "Brand": "Lenovo",
+      "Name": "LOQ 15 13 (Core Ultra 5 125H, 64GB, 256GB SSD, 15.6\" QHD)",
+      "Category": "Laptopy",
+      "PricePLN": 11109
+    },
+    {
+      "Id": 15,
+      "Brand": "ASUS",
+      "Name": "ROG Zephyrus G14 (Ryzen 7 7730U, 16GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 8809
+    },
+    {
+      "Id": 16,
+      "Brand": "Gigabyte",
+      "Name": "AERO 16 15 (Core i5-1335U, 32GB, 2048GB SSD, 16\" OLED)",
+      "Category": "Laptopy",
+      "PricePLN": 5509
+    },
+    {
+      "Id": 17,
+      "Brand": "MSI",
+      "Name": "Katana 15 13 (M3, 16GB, 512GB SSD, 13.3\" FHD)",
+      "Category": "Laptopy",
+      "PricePLN": 7309
+    },
+    {
+      "Id": 18,
+      "Brand": "Gigabyte",
+      "Name": "AORUS 15 17 (Core i7-1355U, 64GB, 512GB SSD, 14\" OLED)",
+      "Category": "Laptopy",
+      "PricePLN": 9649
+    },
+    {
+      "Id": 19,
+      "Brand": "HP",
+      "Name": "Pavilion 14 (Ryzen 7 7730U, 64GB, 1024GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 12699
+    },
+    {
+      "Id": 20,
+      "Brand": "ASUS",
+      "Name": "VivoBook 16 14 (Core Ultra 7 155H, 32GB, 256GB SSD, 14\" WUXGA)",
+      "Category": "Laptopy",
+      "PricePLN": 8809
+    },
+    {
+      "Id": 21,
+      "Brand": "Dell",
+      "Name": "G15 17 (Core i5-1335U, 8GB, 2048GB SSD, 13.3\" FHD)",
+      "Category": "Laptopy",
+      "PricePLN": 3409
+    },
+    {
+      "Id": 22,
+      "Brand": "Acer",
+      "Name": "Predator Helios (M2, RTX 4050, 64GB, 512GB SSD, 13.3\" WUXGA 144Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 6249
+    },
+    {
+      "Id": 23,
+      "Brand": "Dell",
+      "Name": "G15 (M3, 64GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 10709
+    },
+    {
+      "Id": 24,
+      "Brand": "Razer",
+      "Name": "Blade 15 17 (Ryzen 5 7520U, 8GB, 2048GB SSD, 17.3\" WUXGA)",
+      "Category": "Laptopy",
+      "PricePLN": 4909
+    },
+    {
+      "Id": 25,
+      "Brand": "Huawei",
+      "Name": "MateBook D 15 (Core i5-1335U, 64GB, 256GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 3249
+    },
+    {
+      "Id": 26,
+      "Brand": "Samsung",
+      "Name": "Galaxy Book 4 (Core i7-1355U, 16GB, 1024GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 6849
+    },
+    {
+      "Id": 27,
+      "Brand": "MSI",
+      "Name": "Katana 15 13 (Ryzen 5 7520U, 64GB, 256GB SSD, 17.3\" WUXGA)",
+      "Category": "Laptopy",
+      "PricePLN": 7609
+    },
+    {
+      "Id": 28,
+      "Brand": "HP",
+      "Name": "Envy 13 17 (Core i7-1355U, 16GB, 2048GB SSD, 15.6\" OLED)",
+      "Category": "Laptopy",
+      "PricePLN": 12899
+    },
+    {
+      "Id": 29,
+      "Brand": "Dell",
+      "Name": "Inspiron 15 (Ryzen 7 7840U, 32GB, 256GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 5399
+    },
+    {
+      "Id": 30,
+      "Brand": "MSI",
+      "Name": "Prestige 14 13 (Core i7-1355U, 64GB, 1024GB SSD, 13.3\" 4K)",
+      "Category": "Laptopy",
+      "PricePLN": 7309
+    },
+    {
+      "Id": 31,
+      "Brand": "Samsung",
+      "Name": "Galaxy Book 4 17 (Ryzen 7 7840U, 64GB, 2048GB SSD, 13.3\" FHD)",
+      "Category": "Laptopy",
+      "PricePLN": 10809
+    },
+    {
+      "Id": 32,
+      "Brand": "MSI",
+      "Name": "Modern 15 (M3, RTX 4050, 16GB, 2048GB SSD, 13.3\" QHD 144Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 5399
+    },
+    {
+      "Id": 33,
+      "Brand": "HP",
+      "Name": "Pavilion 14 14 (Core Ultra 5 125H, 64GB, 512GB SSD, 14\" WUXGA)",
+      "Category": "Laptopy",
+      "PricePLN": 7349
+    },
+    {
+      "Id": 34,
+      "Brand": "LG",
+      "Name": "gram 14 (Core i7-1355U, RTX 4060, 16GB, 256GB SSD, 13.3\" 4K 120Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 7649
+    },
+    {
+      "Id": 35,
+      "Brand": "LG",
+      "Name": "gram 14 (Core i5-1335U, RTX 4070, 8GB, 512GB SSD, 15.6\" QHD 120Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 12499
+    },
+    {
+      "Id": 36,
+      "Brand": "Apple",
+      "Name": "MacBook Pro 14 (Ryzen 5 7520U, 8GB, 1024GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 9049
+    },
+    {
+      "Id": 37,
+      "Brand": "Razer",
+      "Name": "Blade 15 (Core Ultra 7 155H, zintegrowana, 8GB, 2048GB SSD, 14\" QHD 120Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 1999
+    },
+    {
+      "Id": 38,
+      "Brand": "LG",
+      "Name": "gram 14 (Core Ultra 5 125H, 64GB, 256GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 6899
+    },
+    {
+      "Id": 39,
+      "Brand": "Dell",
+      "Name": "G15 (Core Ultra 5 125H, zintegrowana, 64GB, 1024GB SSD, 14\" WUXGA 144Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 12999
+    },
+    {
+      "Id": 40,
+      "Brand": "Acer",
+      "Name": "TravelMate P2 (Core i7-1355U, 64GB, 256GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 12649
+    },
+    {
+      "Id": 41,
+      "Brand": "Microsoft",
+      "Name": "Surface Laptop 6 (M2, 16GB, 2048GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 12049
+    },
+    {
+      "Id": 42,
+      "Brand": "ASUS",
+      "Name": "ZenBook 14 (Core i7-1355U, 16GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 3049
+    },
+    {
+      "Id": 43,
+      "Brand": "Apple",
+      "Name": "MacBook Air 15 14 (Core Ultra 7 155H, 64GB, 2048GB SSD, 14\" FHD)",
+      "Category": "Laptopy",
+      "PricePLN": 4799
+    },
+    {
+      "Id": 44,
+      "Brand": "Gigabyte",
+      "Name": "G5 (Ryzen 5 7520U, 16GB, 256GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 11649
+    },
+    {
+      "Id": 45,
+      "Brand": "LG",
+      "Name": "gram 16 (M3, 64GB, 2048GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 6499
+    },
+    {
+      "Id": 46,
+      "Brand": "Microsoft",
+      "Name": "Surface Pro 9 (Core i5-1335U, RTX 4070, 32GB, 2048GB SSD, 15.6\" WUXGA 144Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 10709
+    },
+    {
+      "Id": 47,
+      "Brand": "Acer",
+      "Name": "Swift Go 14 (Core i5-1335U, 64GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 9549
+    },
+    {
+      "Id": 48,
+      "Brand": "Lenovo",
+      "Name": "ThinkPad E14 (Core Ultra 7 155H, RTX 4070, 64GB, 256GB SSD, 16\" 4K 120Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 8249
+    },
+    {
+      "Id": 49,
+      "Brand": "Gigabyte",
+      "Name": "AERO 16 (M3, RTX 4050, 16GB, 2048GB SSD, 15.6\" 4K 144Hz)",
+      "Category": "Laptopy",
+      "PricePLN": 7499
+    },
+    {
+      "Id": 50,
+      "Brand": "Samsung",
+      "Name": "Galaxy Book 4 (Ryzen 7 7840U, 64GB, 512GB SSD)",
+      "Category": "Laptopy",
+      "PricePLN": 12709
+    },
+    {
+      "Id": 51,
+      "Brand": "HP",
+      "Name": "All-in-One 24\" (Core i7-13700, 16GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 12009
+    },
+    {
+      "Id": 52,
+      "Brand": "Beelink",
+      "Name": "Mini PC Gaming Pro (Core i5-13600KF, 32GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 16709
+    },
+    {
+      "Id": 53,
+      "Brand": "TechBox",
+      "Name": "PC Gaming Pro (Ryzen 9 7900, 64GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 9409
+    },
+    {
+      "Id": 54,
+      "Brand": "Dell",
+      "Name": "PC Multi (Ryzen 7 7800X3D, RTX 4070, 32GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 8449
+    },
+    {
+      "Id": 55,
+      "Brand": "TechBox",
+      "Name": "Mini PC Gaming Pro (Ryzen 7 7800X3D, 64GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 11409
+    },
+    {
+      "Id": 56,
+      "Brand": "Acer",
+      "Name": "PC Gaming Start (Core i5-13600KF, 32GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 9209
+    },
+    {
+      "Id": 57,
+      "Brand": "TechBox",
+      "Name": "Mini PC Biuro Plus (Ryzen 5 5600G, 32GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 13409
+    },
+    {
+      "Id": 58,
+      "Brand": "ASUS",
+      "Name": "Mini PC Biuro (Core i5-13600KF, 32GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 16399
+    },
+    {
+      "Id": 59,
+      "Brand": "Lenovo",
+      "Name": "All-in-One 24\" (Core i9-13900, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 15599
+    },
+    {
+      "Id": 60,
+      "Brand": "Acer",
+      "Name": "Mini PC Gaming Pro (Ryzen 9 7900, 16GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 16599
+    },
+    {
+      "Id": 61,
+      "Brand": "Acer",
+      "Name": "All-in-One 24\" (Ryzen 5 5600G, 32GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 8249
+    },
+    {
+      "Id": 62,
+      "Brand": "Corsair",
+      "Name": "Mini PC Gaming Pro (Core i3-13100, 64GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 1699
+    },
+    {
+      "Id": 63,
+      "Brand": "Apple",
+      "Name": "PC Multi (Core i5-13600KF, 32GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 16999
+    },
+    {
+      "Id": 64,
+      "Brand": "TechBox",
+      "Name": "All-in-One 24\" (Ryzen 5 5600G, 16GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 9249
+    },
+    {
+      "Id": 65,
+      "Brand": "MSI",
+      "Name": "Mini PC Silent (Core i9-13900, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 12149
+    },
+    {
+      "Id": 66,
+      "Brand": "TechBox",
+      "Name": "All-in-One 27\" (Core i3-13100, 32GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 7649
+    },
+    {
+      "Id": 67,
+      "Brand": "HP",
+      "Name": "PC Multi (Ryzen 9 7900, RTX 4090, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 18499
+    },
+    {
+      "Id": 68,
+      "Brand": "Microsoft",
+      "Name": "PC Multi (Core i3-13100, 16GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 1799
+    },
+    {
+      "Id": 69,
+      "Brand": "ASUS",
+      "Name": "PC Gaming Start (Ryzen 5 5600G, RTX 4090, 16GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 5499
+    },
+    {
+      "Id": 70,
+      "Brand": "Corsair",
+      "Name": "All-in-One 24\" (Ryzen 5 5600G, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 15749
+    },
+    {
+      "Id": 71,
+      "Brand": "Lenovo",
+      "Name": "PC Gaming Start (Core i7-13700, 16GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 3799
+    },
+    {
+      "Id": 72,
+      "Brand": "MSI",
+      "Name": "PC Dom (Ryzen 7 7800X3D, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 5199
+    },
+    {
+      "Id": 73,
+      "Brand": "Corsair",
+      "Name": "All-in-One 24\" (Core i9-13900, 32GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 15349
+    },
+    {
+      "Id": 74,
+      "Brand": "Acer",
+      "Name": "PC Biuro Plus (Ryzen 9 7900, 64GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 3909
+    },
+    {
+      "Id": 75,
+      "Brand": "Apple",
+      "Name": "PC Workstation (Ryzen 7 5700G, RX 7800 XT, 16GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 16749
+    },
+    {
+      "Id": 76,
+      "Brand": "Dell",
+      "Name": "PC Gaming Start (Core i3-13100, RTX 4070, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 8949
+    },
+    {
+      "Id": 77,
+      "Brand": "Corsair",
+      "Name": "PC Creator (Ryzen 7 5700G, RTX 4070 SUPER, 64GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 5909
+    },
+    {
+      "Id": 78,
+      "Brand": "Dell",
+      "Name": "PC Gaming Start (Core i3-13100, zintegrowana, 32GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 11299
+    },
+    {
+      "Id": 79,
+      "Brand": "Minisforum",
+      "Name": "Mini PC Workstation (Core i9-13900, 32GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 2649
+    },
+    {
+      "Id": 80,
+      "Brand": "TechBox",
+      "Name": "Mini PC Gaming Start (Ryzen 5 5600G, 16GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 10199
+    },
+    {
+      "Id": 81,
+      "Brand": "Dell",
+      "Name": "PC Silent (Core i9-13900, RTX 4090, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 15599
+    },
+    {
+      "Id": 82,
+      "Brand": "Beelink",
+      "Name": "PC Silent (Core i5-13400, 32GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 4709
+    },
+    {
+      "Id": 83,
+      "Brand": "Intel",
+      "Name": "All-in-One 24\" (Core i3-13100, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 4149
+    },
+    {
+      "Id": 84,
+      "Brand": "Microsoft",
+      "Name": "Mini PC Biuro Plus (Core i5-13600KF, 64GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 3009
+    },
+    {
+      "Id": 85,
+      "Brand": "ASUS",
+      "Name": "Mini PC Silent (Core i7-13700, 16GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 5549
+    },
+    {
+      "Id": 86,
+      "Brand": "Beelink",
+      "Name": "All-in-One 27\" (Ryzen 5 5600G, 64GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 6449
+    },
+    {
+      "Id": 87,
+      "Brand": "ASUS",
+      "Name": "PC Workstation (Core i5-13600KF, 16GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 5199
+    },
+    {
+      "Id": 88,
+      "Brand": "Beelink",
+      "Name": "PC Silent (Core i9-13900, RTX 4080, 16GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 17999
+    },
+    {
+      "Id": 89,
+      "Brand": "Lenovo",
+      "Name": "PC Gaming Start (Core i5-13600KF, 32GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 10599
+    },
+    {
+      "Id": 90,
+      "Brand": "Microsoft",
+      "Name": "All-in-One 24\" (Core i7-13700, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 13649
+    },
+    {
+      "Id": 91,
+      "Brand": "Intel",
+      "Name": "PC Multi (Core i5-13600KF, RTX 4060, 16GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 16899
+    },
+    {
+      "Id": 92,
+      "Brand": "Corsair",
+      "Name": "All-in-One 27\" (Ryzen 7 7800X3D, 32GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 12109
+    },
+    {
+      "Id": 93,
+      "Brand": "Beelink",
+      "Name": "PC Workstation (Core i7-13700, 16GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 6309
+    },
+    {
+      "Id": 94,
+      "Brand": "Beelink",
+      "Name": "Mini PC Gaming Pro (Core i5-13600KF, 64GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 18749
+    },
+    {
+      "Id": 95,
+      "Brand": "Intel",
+      "Name": "All-in-One 27\" (Ryzen 5 5600G, 64GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 10709
+    },
+    {
+      "Id": 96,
+      "Brand": "TechBox",
+      "Name": "PC Creator (Ryzen 7 5700G, 64GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 6799
+    },
+    {
+      "Id": 97,
+      "Brand": "Microsoft",
+      "Name": "PC Biuro (Core i5-13400, 16GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 15409
+    },
+    {
+      "Id": 98,
+      "Brand": "Apple",
+      "Name": "All-in-One 27\" (Ryzen 7 7800X3D, 16GB, 512GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 9149
+    },
+    {
+      "Id": 99,
+      "Brand": "Acer",
+      "Name": "PC Multi (Core i7-13700, zintegrowana, 64GB, 1024GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 1649
+    },
+    {
+      "Id": 100,
+      "Brand": "Microsoft",
+      "Name": "PC Biuro Plus (Core i7-13700, RTX 4090, 32GB, 2048GB SSD)",
+      "Category": "Komputery",
+      "PricePLN": 15299
+    },
+    {
+      "Id": 101,
+      "Brand": "iiyama",
+      "Name": "Monitor 32\" VA UWQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 1209
+    },
+    {
+      "Id": 102,
+      "Brand": "Philips",
+      "Name": "Monitor 32\" OLED 4K (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 7299
+    },
+    {
+      "Id": 103,
+      "Brand": "Philips",
+      "Name": "Monitor 24\" IPS DQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 4449
+    },
+    {
+      "Id": 104,
+      "Brand": "EIZO",
+      "Name": "Monitor 49\" OLED QHD 240Hz",
+      "Category": "Monitory",
+      "PricePLN": 1999
+    },
+    {
+      "Id": 105,
+      "Brand": "iiyama",
+      "Name": "Monitor 27\" IPS FHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 6849
+    },
+    {
+      "Id": 106,
+      "Brand": "LG",
+      "Name": "Monitor 32\" VA FHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 3099
+    },
+    {
+      "Id": 107,
+      "Brand": "Philips",
+      "Name": "Monitor 27\" VA DQHD 120Hz",
+      "Category": "Monitory",
+      "PricePLN": 4799
+    },
+    {
+      "Id": 108,
+      "Brand": "iiyama",
+      "Name": "Monitor 32\" Mini-LED 4K 240Hz",
+      "Category": "Monitory",
+      "PricePLN": 7549
+    },
+    {
+      "Id": 109,
+      "Brand": "EIZO",
+      "Name": "Monitor 34\" IPS QHD 75Hz",
+      "Category": "Monitory",
+      "PricePLN": 7499
+    },
+    {
+      "Id": 110,
+      "Brand": "Alienware",
+      "Name": "Monitor 34\" OLED FHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 549
+    },
+    {
+      "Id": 111,
+      "Brand": "MSI",
+      "Name": "Monitor 34\" OLED 4K 165Hz",
+      "Category": "Monitory",
+      "PricePLN": 3599
+    },
+    {
+      "Id": 112,
+      "Brand": "BenQ",
+      "Name": "Monitor 27\" Mini-LED FHD 165Hz",
+      "Category": "Monitory",
+      "PricePLN": 7699
+    },
+    {
+      "Id": 113,
+      "Brand": "BenQ",
+      "Name": "Monitor 27\" IPS UWQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 2899
+    },
+    {
+      "Id": 114,
+      "Brand": "Philips",
+      "Name": "Monitor 27\" IPS FHD 120Hz",
+      "Category": "Monitory",
+      "PricePLN": 4409
+    },
+    {
+      "Id": 115,
+      "Brand": "Dell",
+      "Name": "Monitor 49\" VA UWQHD 144Hz",
+      "Category": "Monitory",
+      "PricePLN": 3499
+    },
+    {
+      "Id": 116,
+      "Brand": "Alienware",
+      "Name": "Monitor 49\" Mini-LED DQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 6309
+    },
+    {
+      "Id": 117,
+      "Brand": "Philips",
+      "Name": "Monitor 24\" Mini-LED DQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 2609
+    },
+    {
+      "Id": 118,
+      "Brand": "Alienware",
+      "Name": "Monitor 27\" Mini-LED UWQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 7449
+    },
+    {
+      "Id": 119,
+      "Brand": "Dell",
+      "Name": "Monitor 32\" OLED FHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 2609
+    },
+    {
+      "Id": 120,
+      "Brand": "Dell",
+      "Name": "Monitor 24\" VA DQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 849
+    },
+    {
+      "Id": 121,
+      "Brand": "AOC",
+      "Name": "Monitor 49\" VA FHD 165Hz",
+      "Category": "Monitory",
+      "PricePLN": 2199
+    },
+    {
+      "Id": 122,
+      "Brand": "AOC",
+      "Name": "Monitor 32\" VA DQHD 60Hz",
+      "Category": "Monitory",
+      "PricePLN": 2609
+    },
+    {
+      "Id": 123,
+      "Brand": "Samsung",
+      "Name": "Monitor 32\" VA FHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 7509
+    },
+    {
+      "Id": 124,
+      "Brand": "Samsung",
+      "Name": "Monitor 32\" VA DQHD 120Hz",
+      "Category": "Monitory",
+      "PricePLN": 509
+    },
+    {
+      "Id": 125,
+      "Brand": "iiyama",
+      "Name": "Monitor 27\" Mini-LED DQHD 60Hz",
+      "Category": "Monitory",
+      "PricePLN": 6509
+    },
+    {
+      "Id": 126,
+      "Brand": "ASUS",
+      "Name": "Monitor 32\" IPS UWQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 2299
+    },
+    {
+      "Id": 127,
+      "Brand": "LG",
+      "Name": "Monitor 49\" OLED UWQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 609
+    },
+    {
+      "Id": 128,
+      "Brand": "ASUS",
+      "Name": "Monitor 34\" IPS UWQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 7849
+    },
+    {
+      "Id": 129,
+      "Brand": "Dell",
+      "Name": "Monitor 32\" VA FHD 75Hz",
+      "Category": "Monitory",
+      "PricePLN": 2699
+    },
+    {
+      "Id": 130,
+      "Brand": "ViewSonic",
+      "Name": "Monitor 49\" OLED UWQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 4749
+    },
+    {
+      "Id": 131,
+      "Brand": "ASUS",
+      "Name": "Monitor 49\" Mini-LED FHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 1399
+    },
+    {
+      "Id": 132,
+      "Brand": "ViewSonic",
+      "Name": "Monitor 27\" Mini-LED UWQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 3749
+    },
+    {
+      "Id": 133,
+      "Brand": "ASUS",
+      "Name": "Monitor 34\" IPS 4K (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 2999
+    },
+    {
+      "Id": 134,
+      "Brand": "iiyama",
+      "Name": "Monitor 27\" Mini-LED FHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 7209
+    },
+    {
+      "Id": 135,
+      "Brand": "Dell",
+      "Name": "Monitor 24\" OLED QHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 899
+    },
+    {
+      "Id": 136,
+      "Brand": "MSI",
+      "Name": "Monitor 32\" IPS UWQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 7599
+    },
+    {
+      "Id": 137,
+      "Brand": "EIZO",
+      "Name": "Monitor 24\" OLED DQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 3209
+    },
+    {
+      "Id": 138,
+      "Brand": "Gigabyte",
+      "Name": "Monitor 27\" VA UWQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 7309
+    },
+    {
+      "Id": 139,
+      "Brand": "BenQ",
+      "Name": "Monitor 32\" IPS 4K (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 2249
+    },
+    {
+      "Id": 140,
+      "Brand": "MSI",
+      "Name": "Monitor 49\" IPS DQHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 7199
+    },
+    {
+      "Id": 141,
+      "Brand": "iiyama",
+      "Name": "Monitor 27\" OLED 4K 120Hz",
+      "Category": "Monitory",
+      "PricePLN": 3209
+    },
+    {
+      "Id": 142,
+      "Brand": "Samsung",
+      "Name": "Monitor 49\" Mini-LED FHD 75Hz",
+      "Category": "Monitory",
+      "PricePLN": 6499
+    },
+    {
+      "Id": 143,
+      "Brand": "LG",
+      "Name": "Monitor 49\" VA UWQHD 144Hz",
+      "Category": "Monitory",
+      "PricePLN": 4149
+    },
+    {
+      "Id": 144,
+      "Brand": "Samsung",
+      "Name": "Monitor 32\" OLED DQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 1009
+    },
+    {
+      "Id": 145,
+      "Brand": "Samsung",
+      "Name": "Monitor 49\" IPS FHD 120Hz",
+      "Category": "Monitory",
+      "PricePLN": 4099
+    },
+    {
+      "Id": 146,
+      "Brand": "Philips",
+      "Name": "Monitor 49\" Mini-LED UWQHD (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 2199
+    },
+    {
+      "Id": 147,
+      "Brand": "Dell",
+      "Name": "Monitor 34\" IPS 4K (USB-C PD)",
+      "Category": "Monitory",
+      "PricePLN": 5999
+    },
+    {
+      "Id": 148,
+      "Brand": "ASUS",
+      "Name": "Monitor 32\" IPS QHD (kolory/creator)",
+      "Category": "Monitory",
+      "PricePLN": 5309
+    },
+    {
+      "Id": 149,
+      "Brand": "LG",
+      "Name": "Monitor 32\" VA QHD 120Hz",
+      "Category": "Monitory",
+      "PricePLN": 2749
+    },
+    {
+      "Id": 150,
+      "Brand": "Dell",
+      "Name": "Monitor 34\" Mini-LED QHD 75Hz",
+      "Category": "Monitory",
+      "PricePLN": 3599
+    },
+    {
+      "Id": 151,
+      "Brand": "Hama",
+      "Name": "Klawiatura multimedialna 60% (2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 499
+    },
+    {
+      "Id": 152,
+      "Brand": "Logitech",
+      "Name": "Klawiatura mechaniczna 65% (Blue, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 649
+    },
+    {
+      "Id": 153,
+      "Brand": "Redragon",
+      "Name": "Klawiatura mechaniczna 75% (Silver, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 49
+    },
+    {
+      "Id": 154,
+      "Brand": "Razer",
+      "Name": "Klawiatura ergonomiczna (cicha, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 909
+    },
+    {
+      "Id": 155,
+      "Brand": "Corsair",
+      "Name": "Klawiatura mechaniczna 65% (Silver, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 949
+    },
+    {
+      "Id": 156,
+      "Brand": "Hama",
+      "Name": "Klawiatura mechaniczna 75% (Red, BT)",
+      "Category": "Klawiatury",
+      "PricePLN": 599
+    },
+    {
+      "Id": 157,
+      "Brand": "Keychron",
+      "Name": "Klawiatura multimedialna (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 799
+    },
+    {
+      "Id": 158,
+      "Brand": "Razer",
+      "Name": "Klawiatura membranowa TKL (2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 299
+    },
+    {
+      "Id": 159,
+      "Brand": "Razer",
+      "Name": "Klawiatura membranowa (cicha, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 899
+    },
+    {
+      "Id": 160,
+      "Brand": "Rapoo",
+      "Name": "Klawiatura ergonomiczna (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 249
+    },
+    {
+      "Id": 161,
+      "Brand": "Keychron",
+      "Name": "Klawiatura mechaniczna 75% (Red, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 499
+    },
+    {
+      "Id": 162,
+      "Brand": "Keychron",
+      "Name": "Klawiatura mechaniczna 65% (Red, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 449
+    },
+    {
+      "Id": 163,
+      "Brand": "Keychron",
+      "Name": "Klawiatura membranowa (cicha, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 699
+    },
+    {
+      "Id": 164,
+      "Brand": "Rapoo",
+      "Name": "Klawiatura membranowa (cicha, BT)",
+      "Category": "Klawiatury",
+      "PricePLN": 649
+    },
+    {
+      "Id": 165,
+      "Brand": "Genesis",
+      "Name": "Klawiatura membranowa 65% (USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 709
+    },
+    {
+      "Id": 166,
+      "Brand": "Genesis",
+      "Name": "Klawiatura mechaniczna (cicha, BT)",
+      "Category": "Klawiatury",
+      "PricePLN": 599
+    },
+    {
+      "Id": 167,
+      "Brand": "Genesis",
+      "Name": "Klawiatura mechaniczna (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 449
+    },
+    {
+      "Id": 168,
+      "Brand": "Rapoo",
+      "Name": "Klawiatura mechaniczna full-size (Red, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 309
+    },
+    {
+      "Id": 169,
+      "Brand": "Genesis",
+      "Name": "Klawiatura ergonomiczna (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 309
+    },
+    {
+      "Id": 170,
+      "Brand": "Redragon",
+      "Name": "Klawiatura mechaniczna (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 199
+    },
+    {
+      "Id": 171,
+      "Brand": "Hama",
+      "Name": "Klawiatura low-profile 60% (BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 809
+    },
+    {
+      "Id": 172,
+      "Brand": "SPC Gear",
+      "Name": "Klawiatura multimedialna (cicha, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 49
+    },
+    {
+      "Id": 173,
+      "Brand": "SteelSeries",
+      "Name": "Klawiatura mechaniczna 75% (BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 209
+    },
+    {
+      "Id": 174,
+      "Brand": "Razer",
+      "Name": "Klawiatura low-profile full-size (USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 999
+    },
+    {
+      "Id": 175,
+      "Brand": "Razer",
+      "Name": "Klawiatura ergonomiczna (cicha, BT)",
+      "Category": "Klawiatury",
+      "PricePLN": 999
+    },
+    {
+      "Id": 176,
+      "Brand": "Rapoo",
+      "Name": "Klawiatura mechaniczna (cicha, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 499
+    },
+    {
+      "Id": 177,
+      "Brand": "Hama",
+      "Name": "Klawiatura ergonomiczna 60% (2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 299
+    },
+    {
+      "Id": 178,
+      "Brand": "Corsair",
+      "Name": "Klawiatura mechaniczna TKL (Silver, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 549
+    },
+    {
+      "Id": 179,
+      "Brand": "Rapoo",
+      "Name": "Klawiatura mechaniczna 60% (Brown, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 809
+    },
+    {
+      "Id": 180,
+      "Brand": "HyperX",
+      "Name": "Klawiatura membranowa (cicha, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 109
+    },
+    {
+      "Id": 181,
+      "Brand": "SteelSeries",
+      "Name": "Klawiatura mechaniczna TKL (Red, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 909
+    },
+    {
+      "Id": 182,
+      "Brand": "Apple",
+      "Name": "Klawiatura mechaniczna 65% (Silver, USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 549
+    },
+    {
+      "Id": 183,
+      "Brand": "Corsair",
+      "Name": "Klawiatura mechaniczna 75% (Red, BT)",
+      "Category": "Klawiatury",
+      "PricePLN": 309
+    },
+    {
+      "Id": 184,
+      "Brand": "Hama",
+      "Name": "Klawiatura low-profile (cicha, BT)",
+      "Category": "Klawiatury",
+      "PricePLN": 349
+    },
+    {
+      "Id": 185,
+      "Brand": "Hama",
+      "Name": "Klawiatura ergonomiczna 65% (USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 49
+    },
+    {
+      "Id": 186,
+      "Brand": "Corsair",
+      "Name": "Klawiatura multimedialna 60% (BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 849
+    },
+    {
+      "Id": 187,
+      "Brand": "Corsair",
+      "Name": "Klawiatura mechaniczna full-size (Silver, BT)",
+      "Category": "Klawiatury",
+      "PricePLN": 799
+    },
+    {
+      "Id": 188,
+      "Brand": "Apple",
+      "Name": "Klawiatura membranowa 65% (USB)",
+      "Category": "Klawiatury",
+      "PricePLN": 709
+    },
+    {
+      "Id": 189,
+      "Brand": "SteelSeries",
+      "Name": "Klawiatura mechaniczna 60% (Brown, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 649
+    },
+    {
+      "Id": 190,
+      "Brand": "Razer",
+      "Name": "Klawiatura membranowa (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 599
+    },
+    {
+      "Id": 191,
+      "Brand": "Genesis",
+      "Name": "Klawiatura multimedialna (cicha, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 99
+    },
+    {
+      "Id": 192,
+      "Brand": "Microsoft",
+      "Name": "Klawiatura mechaniczna full-size (Red, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 409
+    },
+    {
+      "Id": 193,
+      "Brand": "Hama",
+      "Name": "Klawiatura membranowa (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 49
+    },
+    {
+      "Id": 194,
+      "Brand": "Genesis",
+      "Name": "Klawiatura mechaniczna 65% (Brown, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 809
+    },
+    {
+      "Id": 195,
+      "Brand": "Keychron",
+      "Name": "Klawiatura ergonomiczna (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 49
+    },
+    {
+      "Id": 196,
+      "Brand": "Logitech",
+      "Name": "Klawiatura mechaniczna 60% (Silver, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 309
+    },
+    {
+      "Id": 197,
+      "Brand": "Rapoo",
+      "Name": "Klawiatura mechaniczna (cicha, 2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 999
+    },
+    {
+      "Id": 198,
+      "Brand": "HyperX",
+      "Name": "Klawiatura mechaniczna 75% (Silver, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 849
+    },
+    {
+      "Id": 199,
+      "Brand": "Microsoft",
+      "Name": "Klawiatura mechaniczna 65% (Blue, BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 999
+    },
+    {
+      "Id": 200,
+      "Brand": "SteelSeries",
+      "Name": "Klawiatura ergonomiczna full-size (BT/2.4G)",
+      "Category": "Klawiatury",
+      "PricePLN": 649
+    },
+    {
+      "Id": 201,
+      "Brand": "Glorious",
+      "Name": "Mysz biurowa (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 349
+    },
+    {
+      "Id": 202,
+      "Brand": "Rapoo",
+      "Name": "Trackball (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 409
+    },
+    {
+      "Id": 203,
+      "Brand": "Genesis",
+      "Name": "Mysz ergonomiczna pionowa (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 609
+    },
+    {
+      "Id": 204,
+      "Brand": "Razer",
+      "Name": "Trackball (BT)",
+      "Category": "Myszki",
+      "PricePLN": 199
+    },
+    {
+      "Id": 205,
+      "Brand": "HyperX",
+      "Name": "Trackball (BT)",
+      "Category": "Myszki",
+      "PricePLN": 299
+    },
+    {
+      "Id": 206,
+      "Brand": "Glorious",
+      "Name": "Mysz ergonomiczna pionowa (USB)",
+      "Category": "Myszki",
+      "PricePLN": 199
+    },
+    {
+      "Id": 207,
+      "Brand": "Rapoo",
+      "Name": "Mysz ergonomiczna pionowa (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 609
+    },
+    {
+      "Id": 208,
+      "Brand": "Delux",
+      "Name": "Mysz ergonomiczna pionowa (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 309
+    },
+    {
+      "Id": 209,
+      "Brand": "Razer",
+      "Name": "Mysz mobilna (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 499
+    },
+    {
+      "Id": 210,
+      "Brand": "Razer",
+      "Name": "Mysz ergonomiczna pionowa (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 649
+    },
+    {
+      "Id": 211,
+      "Brand": "Genesis",
+      "Name": "Trackball (USB)",
+      "Category": "Myszki",
+      "PricePLN": 149
+    },
+    {
+      "Id": 212,
+      "Brand": "SteelSeries",
+      "Name": "Trackball (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 399
+    },
+    {
+      "Id": 213,
+      "Brand": "Razer",
+      "Name": "Mysz ergonomiczna pionowa (BT)",
+      "Category": "Myszki",
+      "PricePLN": 799
+    },
+    {
+      "Id": 214,
+      "Brand": "HyperX",
+      "Name": "Mysz gamingowa (1200 DPI, BT)",
+      "Category": "Myszki",
+      "PricePLN": 209
+    },
+    {
+      "Id": 215,
+      "Brand": "Microsoft",
+      "Name": "Trackball (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 649
+    },
+    {
+      "Id": 216,
+      "Brand": "Rapoo",
+      "Name": "Mysz gamingowa (1200 DPI, USB)",
+      "Category": "Myszki",
+      "PricePLN": 349
+    },
+    {
+      "Id": 217,
+      "Brand": "Genesis",
+      "Name": "Trackball (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 609
+    },
+    {
+      "Id": 218,
+      "Brand": "SteelSeries",
+      "Name": "Mysz ergonomiczna pionowa (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 799
+    },
+    {
+      "Id": 219,
+      "Brand": "Glorious",
+      "Name": "Mysz gamingowa (1600 DPI, BT)",
+      "Category": "Myszki",
+      "PricePLN": 499
+    },
+    {
+      "Id": 220,
+      "Brand": "Logitech",
+      "Name": "Mysz silent (BT)",
+      "Category": "Myszki",
+      "PricePLN": 209
+    },
+    {
+      "Id": 221,
+      "Brand": "Glorious",
+      "Name": "Mysz gamingowa (1200 DPI, 2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 209
+    },
+    {
+      "Id": 222,
+      "Brand": "HyperX",
+      "Name": "Mysz ergonomiczna pionowa (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 509
+    },
+    {
+      "Id": 223,
+      "Brand": "Delux",
+      "Name": "Mysz gamingowa (1600 DPI, BT)",
+      "Category": "Myszki",
+      "PricePLN": 799
+    },
+    {
+      "Id": 224,
+      "Brand": "Genesis",
+      "Name": "Mysz ergonomiczna pionowa (USB)",
+      "Category": "Myszki",
+      "PricePLN": 109
+    },
+    {
+      "Id": 225,
+      "Brand": "HyperX",
+      "Name": "Mysz ergonomiczna pionowa (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 609
+    },
+    {
+      "Id": 226,
+      "Brand": "Roccat",
+      "Name": "Trackball (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 709
+    },
+    {
+      "Id": 227,
+      "Brand": "SteelSeries",
+      "Name": "Trackball (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 249
+    },
+    {
+      "Id": 228,
+      "Brand": "Kensington",
+      "Name": "Mysz gamingowa (26000 DPI, 2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 349
+    },
+    {
+      "Id": 229,
+      "Brand": "SteelSeries",
+      "Name": "Mysz ergonomiczna pionowa (USB)",
+      "Category": "Myszki",
+      "PricePLN": 249
+    },
+    {
+      "Id": 230,
+      "Brand": "Razer",
+      "Name": "Mysz premium (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 409
+    },
+    {
+      "Id": 231,
+      "Brand": "SteelSeries",
+      "Name": "Mysz ergonomiczna pionowa (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 149
+    },
+    {
+      "Id": 232,
+      "Brand": "Delux",
+      "Name": "Trackball (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 29
+    },
+    {
+      "Id": 233,
+      "Brand": "Xiaomi",
+      "Name": "Trackball (BT)",
+      "Category": "Myszki",
+      "PricePLN": 309
+    },
+    {
+      "Id": 234,
+      "Brand": "Logitech",
+      "Name": "Mysz ergonomiczna pionowa (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 509
+    },
+    {
+      "Id": 235,
+      "Brand": "Razer",
+      "Name": "Trackball (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 449
+    },
+    {
+      "Id": 236,
+      "Brand": "Glorious",
+      "Name": "Mysz gamingowa (USB)",
+      "Category": "Myszki",
+      "PricePLN": 609
+    },
+    {
+      "Id": 237,
+      "Brand": "Glorious",
+      "Name": "Mysz ergonomiczna pionowa (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 499
+    },
+    {
+      "Id": 238,
+      "Brand": "Corsair",
+      "Name": "Mysz mobilna (USB)",
+      "Category": "Myszki",
+      "PricePLN": 449
+    },
+    {
+      "Id": 239,
+      "Brand": "Delux",
+      "Name": "Mysz ergonomiczna pionowa (BT)",
+      "Category": "Myszki",
+      "PricePLN": 549
+    },
+    {
+      "Id": 240,
+      "Brand": "Delux",
+      "Name": "Mysz biurowa (USB)",
+      "Category": "Myszki",
+      "PricePLN": 749
+    },
+    {
+      "Id": 241,
+      "Brand": "Kensington",
+      "Name": "Mysz gamingowa (1600 DPI, 2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 499
+    },
+    {
+      "Id": 242,
+      "Brand": "Genesis",
+      "Name": "Mysz ergonomiczna pionowa (2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 599
+    },
+    {
+      "Id": 243,
+      "Brand": "Rapoo",
+      "Name": "Mysz ergonomiczna pionowa (USB)",
+      "Category": "Myszki",
+      "PricePLN": 399
+    },
+    {
+      "Id": 244,
+      "Brand": "Genesis",
+      "Name": "Mysz silent (BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 799
+    },
+    {
+      "Id": 245,
+      "Brand": "Kensington",
+      "Name": "Mysz gamingowa (1600 DPI, BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 599
+    },
+    {
+      "Id": 246,
+      "Brand": "Genesis",
+      "Name": "Trackball (BT)",
+      "Category": "Myszki",
+      "PricePLN": 699
+    },
+    {
+      "Id": 247,
+      "Brand": "Razer",
+      "Name": "Mysz gamingowa (3200 DPI, BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 409
+    },
+    {
+      "Id": 248,
+      "Brand": "Xiaomi",
+      "Name": "Mysz gamingowa (26000 DPI, BT/2.4G)",
+      "Category": "Myszki",
+      "PricePLN": 709
+    },
+    {
+      "Id": 249,
+      "Brand": "Genesis",
+      "Name": "Mysz gamingowa (16000 DPI, BT)",
+      "Category": "Myszki",
+      "PricePLN": 399
+    },
+    {
+      "Id": 250,
+      "Brand": "Rapoo",
+      "Name": "Trackball (BT)",
+      "Category": "Myszki",
+      "PricePLN": 549
+    },
+    {
+      "Id": 251,
+      "Brand": "Sharp",
+      "Name": "Telewizor 85\" 4K OLED 144Hz",
+      "Category": "Telewizory",
+      "PricePLN": 8909
+    },
+    {
+      "Id": 252,
+      "Brand": "TCL",
+      "Name": "Telewizor 75\" 4K OLED 60Hz",
+      "Category": "Telewizory",
+      "PricePLN": 5849
+    },
+    {
+      "Id": 253,
+      "Brand": "TCL",
+      "Name": "Telewizor 85\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 8849
+    },
+    {
+      "Id": 254,
+      "Brand": "Sharp",
+      "Name": "Telewizor 55\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 10399
+    },
+    {
+      "Id": 255,
+      "Brand": "Sharp",
+      "Name": "Telewizor 65\" 4K OLED 60Hz",
+      "Category": "Telewizory",
+      "PricePLN": 5709
+    },
+    {
+      "Id": 256,
+      "Brand": "Hisense",
+      "Name": "Telewizor 43\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 11749
+    },
+    {
+      "Id": 257,
+      "Brand": "Xiaomi",
+      "Name": "Telewizor 50\" 4K OLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 12449
+    },
+    {
+      "Id": 258,
+      "Brand": "Sony",
+      "Name": "Telewizor 75\" 4K QLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 1899
+    },
+    {
+      "Id": 259,
+      "Brand": "Sharp",
+      "Name": "Telewizor 85\" 4K QLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 2649
+    },
+    {
+      "Id": 260,
+      "Brand": "Philips",
+      "Name": "Telewizor 65\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 13609
+    },
+    {
+      "Id": 261,
+      "Brand": "Samsung",
+      "Name": "Telewizor 50\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 15449
+    },
+    {
+      "Id": 262,
+      "Brand": "Xiaomi",
+      "Name": "Telewizor 50\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 5699
+    },
+    {
+      "Id": 263,
+      "Brand": "Samsung",
+      "Name": "Telewizor 85\" 4K QLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 13199
+    },
+    {
+      "Id": 264,
+      "Brand": "Samsung",
+      "Name": "Telewizor 65\" 4K QLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 14749
+    },
+    {
+      "Id": 265,
+      "Brand": "Xiaomi",
+      "Name": "Telewizor 85\" 4K OLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 1149
+    },
+    {
+      "Id": 266,
+      "Brand": "Toshiba",
+      "Name": "Telewizor 43\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 8499
+    },
+    {
+      "Id": 267,
+      "Brand": "Sharp",
+      "Name": "Telewizor 65\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 8649
+    },
+    {
+      "Id": 268,
+      "Brand": "TCL",
+      "Name": "Telewizor 55\" 4K QLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 8599
+    },
+    {
+      "Id": 269,
+      "Brand": "Hisense",
+      "Name": "Telewizor 50\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 6549
+    },
+    {
+      "Id": 270,
+      "Brand": "Toshiba",
+      "Name": "Telewizor 50\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 15099
+    },
+    {
+      "Id": 271,
+      "Brand": "Panasonic",
+      "Name": "Telewizor 75\" 4K OLED 60Hz",
+      "Category": "Telewizory",
+      "PricePLN": 7599
+    },
+    {
+      "Id": 272,
+      "Brand": "LG",
+      "Name": "Telewizor 50\" 4K Mini-LED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 5009
+    },
+    {
+      "Id": 273,
+      "Brand": "Hisense",
+      "Name": "Telewizor 50\" 4K Mini-LED 120Hz",
+      "Category": "Telewizory",
+      "PricePLN": 6449
+    },
+    {
+      "Id": 274,
+      "Brand": "Toshiba",
+      "Name": "Telewizor 75\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 11749
+    },
+    {
+      "Id": 275,
+      "Brand": "TCL",
+      "Name": "Telewizor 85\" 4K LED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 6009
+    },
+    {
+      "Id": 276,
+      "Brand": "Panasonic",
+      "Name": "Telewizor 75\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 2999
+    },
+    {
+      "Id": 277,
+      "Brand": "Hisense",
+      "Name": "Telewizor 75\" 4K QLED 60Hz",
+      "Category": "Telewizory",
+      "PricePLN": 3149
+    },
+    {
+      "Id": 278,
+      "Brand": "Sony",
+      "Name": "Telewizor 85\" 4K OLED 120Hz",
+      "Category": "Telewizory",
+      "PricePLN": 12599
+    },
+    {
+      "Id": 279,
+      "Brand": "Xiaomi",
+      "Name": "Telewizor 85\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 12199
+    },
+    {
+      "Id": 280,
+      "Brand": "LG",
+      "Name": "Telewizor 65\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 10209
+    },
+    {
+      "Id": 281,
+      "Brand": "Samsung",
+      "Name": "Telewizor 75\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 9709
+    },
+    {
+      "Id": 282,
+      "Brand": "Sony",
+      "Name": "Telewizor 75\" 4K Mini-LED 60Hz",
+      "Category": "Telewizory",
+      "PricePLN": 12109
+    },
+    {
+      "Id": 283,
+      "Brand": "Toshiba",
+      "Name": "Telewizor 43\" 4K Mini-LED 60Hz",
+      "Category": "Telewizory",
+      "PricePLN": 8409
+    },
+    {
+      "Id": 284,
+      "Brand": "Sharp",
+      "Name": "Telewizor 65\" 4K LED 144Hz",
+      "Category": "Telewizory",
+      "PricePLN": 8599
+    },
+    {
+      "Id": 285,
+      "Brand": "Panasonic",
+      "Name": "Telewizor 85\" 4K LED 144Hz",
+      "Category": "Telewizory",
+      "PricePLN": 1909
+    },
+    {
+      "Id": 286,
+      "Brand": "Xiaomi",
+      "Name": "Telewizor 55\" 4K Mini-LED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 13609
+    },
+    {
+      "Id": 287,
+      "Brand": "Panasonic",
+      "Name": "Telewizor 65\" 4K Mini-LED 120Hz",
+      "Category": "Telewizory",
+      "PricePLN": 7109
+    },
+    {
+      "Id": 288,
+      "Brand": "Sharp",
+      "Name": "Telewizor 85\" 4K OLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 3999
+    },
+    {
+      "Id": 289,
+      "Brand": "Panasonic",
+      "Name": "Telewizor 50\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 13309
+    },
+    {
+      "Id": 290,
+      "Brand": "Hisense",
+      "Name": "Telewizor 85\" 4K Mini-LED 144Hz",
+      "Category": "Telewizory",
+      "PricePLN": 7209
+    },
+    {
+      "Id": 291,
+      "Brand": "TCL",
+      "Name": "Telewizor 55\" 4K QLED 120Hz",
+      "Category": "Telewizory",
+      "PricePLN": 4099
+    },
+    {
+      "Id": 292,
+      "Brand": "LG",
+      "Name": "Telewizor 85\" 4K Mini-LED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 13509
+    },
+    {
+      "Id": 293,
+      "Brand": "TCL",
+      "Name": "Telewizor 43\" 4K LED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 1549
+    },
+    {
+      "Id": 294,
+      "Brand": "Toshiba",
+      "Name": "Telewizor 85\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 13109
+    },
+    {
+      "Id": 295,
+      "Brand": "Panasonic",
+      "Name": "Telewizor 50\" 4K QLED 60Hz",
+      "Category": "Telewizory",
+      "PricePLN": 3299
+    },
+    {
+      "Id": 296,
+      "Brand": "Hisense",
+      "Name": "Telewizor 85\" 4K OLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 10899
+    },
+    {
+      "Id": 297,
+      "Brand": "Philips",
+      "Name": "Telewizor 55\" 4K QLED Smart TV",
+      "Category": "Telewizory",
+      "PricePLN": 9509
+    },
+    {
+      "Id": 298,
+      "Brand": "Panasonic",
+      "Name": "Telewizor 55\" 4K LED 144Hz",
+      "Category": "Telewizory",
+      "PricePLN": 10699
+    },
+    {
+      "Id": 299,
+      "Brand": "Sony",
+      "Name": "Telewizor 85\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 9109
+    },
+    {
+      "Id": 300,
+      "Brand": "Philips",
+      "Name": "Telewizor 85\" 4K LED (budżet)",
+      "Category": "Telewizory",
+      "PricePLN": 6299
+    },
+    {
+      "Id": 301,
+      "Brand": "8BitDo",
+      "Name": "Kontroler do Xbox (Bluetooth)",
+      "Category": "Konsole",
+      "PricePLN": 1699
+    },
+    {
+      "Id": 302,
+      "Brand": "Logitech",
+      "Name": "Akcesorium: Zestaw słuchawkowy",
+      "Category": "Konsole",
+      "PricePLN": 1349
+    },
+    {
+      "Id": 303,
+      "Brand": "Sony",
+      "Name": "Akcesorium: Etui ochronne",
+      "Category": "Konsole",
+      "PricePLN": 1249
+    },
+    {
+      "Id": 304,
+      "Brand": "Valve",
+      "Name": "Akcesorium: Zestaw słuchawkowy",
+      "Category": "Konsole",
+      "PricePLN": 849
+    },
+    {
+      "Id": 305,
+      "Brand": "Anbernic",
+      "Name": "Kontroler do Xbox (Bluetooth)",
+      "Category": "Konsole",
+      "PricePLN": 3299
+    },
+    {
+      "Id": 306,
+      "Brand": "Valve",
+      "Name": "Kontroler do Xbox (Bluetooth)",
+      "Category": "Konsole",
+      "PricePLN": 209
+    },
+    {
+      "Id": 307,
+      "Brand": "Valve",
+      "Name": "Akcesorium: Ładowarka do padów",
+      "Category": "Konsole",
+      "PricePLN": 1849
+    },
+    {
+      "Id": 308,
+      "Brand": "Valve",
+      "Name": "Kontroler do Switch Pro (Bluetooth)",
+      "Category": "Konsole",
+      "PricePLN": 4599
+    },
+    {
+      "Id": 309,
+      "Brand": "Anbernic",
+      "Name": "Akcesorium: Zestaw słuchawkowy",
+      "Category": "Konsole",
+      "PricePLN": 4249
+    },
+    {
+      "Id": 310,
+      "Brand": "Microsoft",
+      "Name": "Kontroler do Switch Pro (Bluetooth)",
+      "Category": "Konsole",
+      "PricePLN": 2749
+    },
+    {
+      "Id": 311,
+      "Brand": "Sony",
+      "Name": "Kontroler do Xbox (Bluetooth)",
+      "Category": "Konsole",
+      "PricePLN": 4699
+    },
+    {
+      "Id": 312,
+      "Brand": "Valve",
+      "Name": "Akcesorium: Karta pamięci",
+      "Category": "Konsole",
+      "PricePLN": 2949
+    },
+    {
+      "Id": 313,
+      "Brand": "Logitech",
+      "Name": "Akcesorium: Ładowarka do padów",
+      "Category": "Konsole",
+      "PricePLN": 3009
+    },
+    {
+      "Id": 314,
+      "Brand": "Nintendo",
+      "Name": "Akcesorium: Etui ochronne",
+      "Category": "Konsole",
+      "PricePLN": 699
+    },
+    {
+      "Id": 315,
+      "Brand": "Sony",
+      "Name": "Kontroler do PS5 DualSense (Bluetooth)",
+      "Category": "Konsole",
+      "PricePLN": 1299
+    },
+    {
+      "Id": 316,
+      "Brand": "Valve",
+      "Name": "PlayStation 5 Digital",
+      "Category": "Konsole",
+      "PricePLN": 4249
+    },
+    {
+      "Id": 317,
+      "Brand": "Anbernic",
+      "Name": "PlayStation 5 Slim",
+      "Category": "Konsole",
+      "PricePLN": 299
+    },
+    {
+      "Id": 318,
+      "Brand": "8BitDo",
+      "Name": "Akcesorium: Etui ochronne",
+      "Category": "Konsole",
+      "PricePLN": 2499
+    },
+    {
+      "Id": 319,
+      "Brand": "Meta",
+      "Name": "PlayStation 5 Slim",
+      "Category": "Konsole",
+      "PricePLN": 999
+    },
+    {
+      "Id": 320,
+      "Brand": "Meta",
+      "Name": "Nintendo Switch",
+      "Category": "Konsole",
+      "PricePLN": 3249
+    },
+    {
+      "Id": 321,
+      "Brand": "Lenovo",
+      "Name": "IdeaPad 5 Pro 14 Ryzen 7",
+      "Category": "Laptopy",
+      "PricePLN": 4899
+    },
+    {
+      "Id": 322,
+      "Brand": "ASUS",
+      "Name": "ZenBook 15 OLED i7",
+      "Category": "Laptopy",
+      "PricePLN": 7399
+    },
+    {
+      "Id": 323,
+      "Brand": "Dell",
+      "Name": "Latitude 5440 i5",
+      "Category": "Laptopy",
+      "PricePLN": 5199
+    },
+    {
+      "Id": 324,
+      "Brand": "HP",
+      "Name": "EliteBook 850 G9",
+      "Category": "Laptopy",
+      "PricePLN": 6899
+    },
+    {
+      "Id": 325,
+      "Brand": "Acer",
+      "Name": "TravelMate P4 Ryzen 5",
+      "Category": "Laptopy",
+      "PricePLN": 4199
+    },
+    {
+      "Id": 326,
+      "Brand": "MSI",
+      "Name": "Prestige 16 EVO",
+      "Category": "Laptopy",
+      "PricePLN": 7999
+    },
+    {
+      "Id": 327,
+      "Brand": "Gigabyte",
+      "Name": "AERO 14 OLED Creator",
+      "Category": "Laptopy",
+      "PricePLN": 8999
+    },
+    {
+      "Id": 328,
+      "Brand": "Samsung",
+      "Name": "Galaxy Book 4 Ultra",
+      "Category": "Laptopy",
+      "PricePLN": 9999
+    },
+    {
+      "Id": 329,
+      "Brand": "LG",
+      "Name": "Gram 16 UltraLight",
+      "Category": "Laptopy",
+      "PricePLN": 7299
+    },
+    {
+      "Id": 330,
+      "Brand": "Huawei",
+      "Name": "MateBook 16 Ryzen 7",
+      "Category": "Laptopy",
+      "PricePLN": 5799
+    },
+
+    {
+      "Id": 331,
+      "Brand": "TechBox",
+      "Name": "PC Gaming RTX 4060 Ti",
+      "Category": "Komputery",
+      "PricePLN": 5799
+    },
+    {
+      "Id": 332,
+      "Brand": "TechBox",
+      "Name": "PC Office Silent i5",
+      "Category": "Komputery",
+      "PricePLN": 2999
+    },
+    {
+      "Id": 333,
+      "Brand": "Dell",
+      "Name": "Vostro Tower i7",
+      "Category": "Komputery",
+      "PricePLN": 5299
+    },
+    {
+      "Id": 334,
+      "Brand": "HP",
+      "Name": "Z2 G9 Workstation",
+      "Category": "Komputery",
+      "PricePLN": 8999
+    },
+    {
+      "Id": 335,
+      "Brand": "Lenovo",
+      "Name": "ThinkStation P360",
+      "Category": "Komputery",
+      "PricePLN": 7499
+    },
+    {
+      "Id": 336,
+      "Brand": "Minisforum",
+      "Name": "UM790 Pro Ryzen 9",
+      "Category": "Komputery",
+      "PricePLN": 3999
+    },
+    {
+      "Id": 337,
+      "Brand": "Intel",
+      "Name": "NUC 13 Extreme",
+      "Category": "Komputery",
+      "PricePLN": 6499
+    },
+    {
+      "Id": 338,
+      "Brand": "ASUS",
+      "Name": "ROG Strix G Gaming PC",
+      "Category": "Komputery",
+      "PricePLN": 9999
+    },
+    {
+      "Id": 339,
+      "Brand": "Corsair",
+      "Name": "One i300 Compact",
+      "Category": "Komputery",
+      "PricePLN": 12999
+    },
+    {
+      "Id": 340,
+      "Brand": "Apple",
+      "Name": "Mac Studio M2 Max",
+      "Category": "Komputery",
+      "PricePLN": 14999
+    },
+
+    {
+      "Id": 341,
+      "Brand": "LG",
+      "Name": "Monitor 27 IPS QHD Ergo",
+      "Category": "Monitory",
+      "PricePLN": 1499
+    },
+    {
+      "Id": 342,
+      "Brand": "Samsung",
+      "Name": "Monitor 32 4K Curved",
+      "Category": "Monitory",
+      "PricePLN": 2399
+    },
+    {
+      "Id": 343,
+      "Brand": "Dell",
+      "Name": "UltraSharp U2723QE",
+      "Category": "Monitory",
+      "PricePLN": 2999
+    },
+    {
+      "Id": 344,
+      "Brand": "BenQ",
+      "Name": "PD2725U Designer",
+      "Category": "Monitory",
+      "PricePLN": 3599
+    },
+    {
+      "Id": 345,
+      "Brand": "ASUS",
+      "Name": "ProArt PA27DCE",
+      "Category": "Monitory",
+      "PricePLN": 1899
+    },
+    {
+      "Id": 346,
+      "Brand": "AOC",
+      "Name": "Monitor 34 UWQHD Gaming",
+      "Category": "Monitory",
+      "PricePLN": 1999
+    },
+    {
+      "Id": 347,
+      "Brand": "MSI",
+      "Name": "Optix MAG 27 165Hz",
+      "Category": "Monitory",
+      "PricePLN": 1399
+    },
+    {
+      "Id": 348,
+      "Brand": "iiyama",
+      "Name": "G-Master Red Eagle 240Hz",
+      "Category": "Monitory",
+      "PricePLN": 1699
+    },
+    {
+      "Id": 349,
+      "Brand": "Philips",
+      "Name": "Monitor 24 USB-C Dock",
+      "Category": "Monitory",
+      "PricePLN": 1099
+    },
+    {
+      "Id": 350,
+      "Brand": "EIZO",
+      "Name": "ColorEdge CS2740",
+      "Category": "Monitory",
+      "PricePLN": 5999
+    },
+
+    {
+      "Id": 351,
+      "Brand": "Logitech",
+      "Name": "MX Mechanical Mini",
+      "Category": "Klawiatury",
+      "PricePLN": 699
+    },
+    {
+      "Id": 352,
+      "Brand": "Keychron",
+      "Name": "Q1 Pro Wireless",
+      "Category": "Klawiatury",
+      "PricePLN": 899
+    },
+    {
+      "Id": 353,
+      "Brand": "Razer",
+      "Name": "Huntsman Mini",
+      "Category": "Klawiatury",
+      "PricePLN": 499
+    },
+    {
+      "Id": 354,
+      "Brand": "Corsair",
+      "Name": "K65 RGB Mini",
+      "Category": "Klawiatury",
+      "PricePLN": 449
+    },
+    {
+      "Id": 355,
+      "Brand": "SteelSeries",
+      "Name": "Apex Pro TKL",
+      "Category": "Klawiatury",
+      "PricePLN": 899
+    },
+    {
+      "Id": 356,
+      "Brand": "Microsoft",
+      "Name": "Ergonomic Keyboard",
+      "Category": "Klawiatury",
+      "PricePLN": 499
+    },
+    {
+      "Id": 357,
+      "Brand": "Apple",
+      "Name": "Magic Keyboard Touch ID",
+      "Category": "Klawiatury",
+      "PricePLN": 699
+    },
+    {
+      "Id": 358,
+      "Brand": "Genesis",
+      "Name": "Thor 660 RGB",
+      "Category": "Klawiatury",
+      "PricePLN": 299
+    },
+    {
+      "Id": 359,
+      "Brand": "Redragon",
+      "Name": "K552 Kumara",
+      "Category": "Klawiatury",
+      "PricePLN": 199
+    },
+    {
+      "Id": 360,
+      "Brand": "SPC Gear",
+      "Name": "GK650K Pudding",
+      "Category": "Klawiatury",
+      "PricePLN": 349
+    },
+
+    {
+      "Id": 361,
+      "Brand": "Logitech",
+      "Name": "G Pro Wireless",
+      "Category": "Myszki",
+      "PricePLN": 499
+    },
+    {
+      "Id": 362,
+      "Brand": "Razer",
+      "Name": "Viper Ultimate",
+      "Category": "Myszki",
+      "PricePLN": 529
+    },
+    {
+      "Id": 363,
+      "Brand": "SteelSeries",
+      "Name": "Aerox 5 Wireless",
+      "Category": "Myszki",
+      "PricePLN": 449
+    },
+    {
+      "Id": 364,
+      "Brand": "Corsair",
+      "Name": "Dark Core RGB Pro",
+      "Category": "Myszki",
+      "PricePLN": 399
+    },
+    {
+      "Id": 365,
+      "Brand": "Glorious",
+      "Name": "Model O Wireless",
+      "Category": "Myszki",
+      "PricePLN": 349
+    },
+    {
+      "Id": 366,
+      "Brand": "Xiaomi",
+      "Name": "Mi Dual Mode Mouse",
+      "Category": "Myszki",
+      "PricePLN": 79
+    },
+    {
+      "Id": 367,
+      "Brand": "Rapoo",
+      "Name": "M500 Silent",
+      "Category": "Myszki",
+      "PricePLN": 99
+    },
+    {
+      "Id": 368,
+      "Brand": "Kensington",
+      "Name": "Expert Trackball",
+      "Category": "Myszki",
+      "PricePLN": 329
+    },
+    {
+      "Id": 369,
+      "Brand": "Delux",
+      "Name": "Vertical Ergonomic Mouse",
+      "Category": "Myszki",
+      "PricePLN": 159
+    },
+    {
+      "Id": 370,
+      "Brand": "Roccat",
+      "Name": "Kone XP",
+      "Category": "Myszki",
+      "PricePLN": 299
+    },
+
+    {
+      "Id": 371,
+      "Brand": "Samsung",
+      "Name": "TV 55 OLED S90C",
+      "Category": "Telewizory",
+      "PricePLN": 5999
+    },
+    {
+      "Id": 372,
+      "Brand": "LG",
+      "Name": "TV 65 OLED C3",
+      "Category": "Telewizory",
+      "PricePLN": 7499
+    },
+    {
+      "Id": 373,
+      "Brand": "Sony",
+      "Name": "TV 55 Bravia XR",
+      "Category": "Telewizory",
+      "PricePLN": 6899
+    },
+    {
+      "Id": 374,
+      "Brand": "Philips",
+      "Name": "TV 65 Ambilight",
+      "Category": "Telewizory",
+      "PricePLN": 4799
+    },
+    {
+      "Id": 375,
+      "Brand": "TCL",
+      "Name": "TV 75 Mini-LED C845",
+      "Category": "Telewizory",
+      "PricePLN": 6999
+    },
+    {
+      "Id": 376,
+      "Brand": "Hisense",
+      "Name": "TV 65 U8KQ",
+      "Category": "Telewizory",
+      "PricePLN": 5299
+    },
+    {
+      "Id": 377,
+      "Brand": "Panasonic",
+      "Name": "TV 55 OLED LZ2000",
+      "Category": "Telewizory",
+      "PricePLN": 8299
+    },
+    {
+      "Id": 378,
+      "Brand": "Xiaomi",
+      "Name": "TV 55 Q2 QLED",
+      "Category": "Telewizory",
+      "PricePLN": 2399
+    },
+    {
+      "Id": 379,
+      "Brand": "Sharp",
+      "Name": "TV 70 4K Aquos",
+      "Category": "Telewizory",
+      "PricePLN": 3999
+    },
+    {
+      "Id": 380,
+      "Brand": "Toshiba",
+      "Name": "TV 50 4K Vidaa",
+      "Category": "Telewizory",
+      "PricePLN": 1899
+    }
+  ]
+}

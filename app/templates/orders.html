@@ -21,7 +21,7 @@
           <input
             type="text"
             name="search"
-            placeholder="Search for watches..."
+            placeholder="Search for Products..."
           />
           <button type="submit">Search</button>
         </form>
@@ -33,7 +33,7 @@
           <button class="dropdown-btn">☰</button>
           <div class="dropdown-content">
             <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-            <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+            <a href="{{ url_for('main.my_products') }}">My Products</a>
             <a href="{{ url_for('auth.logout') }}">Logout</a>
           </div>
         </div>
@@ -62,7 +62,7 @@
           <tr>
             <td>#{{ order.id }}</td>
             <td>
-              {% for item in order.items %} {{ item.watch.name }}{% if not
+              {% for item in order.items %} {{ item.product.name }}{% if not
               loop.last %}, {% endif %} {% endfor %}
             </td>
             <td>${{ "%.2f"|format(order.total_price) }}</td>
@@ -83,7 +83,7 @@
       </div>
       <div class="footer-info">
         <p>30-200 Cracow</p>
-        <p>Email: mdsupport@watchstore.com</p>
+        <p>Email: mdsupport@productstore.com</p>
         <p>Phone: +739 221 226</p>
       </div>
     </footer>

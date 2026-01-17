@@ -12,7 +12,8 @@ class TestCart(unittest.TestCase):
             db.create_all()
             self.user = User(username="testuser", password="testpassword")
             self.watch = Watch(name="Test Watch", brand="Test Brand", price=100.0,
-                               description="Test Desc", image_url="test.jpg", sex="male", category="sport")
+                               description="Test Desc", image_url="test.jpg", sex="male", category="sport",
+                               color="Black", material="Steel", purpose="Testing")
             db.session.add(self.user)
             db.session.add(self.watch)
             db.session.commit()

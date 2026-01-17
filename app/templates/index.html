@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Watch Store</title>
+    <title>Product Store</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
@@ -17,15 +17,36 @@
         </a>
       </div>
       <div class="search-bar">
-        <form action="{{ url_for('main.index') }}" method="GET">
-          <input
-            type="text"
-            name="search"
-            placeholder="Search for watches..."
-          />
-          <button type="submit">Search</button>
-        </form>
-      </div>
+  <form action="{{ url_for('main.index') }}" method="GET" class="search-form">
+
+    <!-- SEARCH -->
+    <input
+      type="text"
+      name="search"
+      placeholder="Search for products..."
+      value="{{ request.args.get('search', '') }}"
+    />
+
+    <!-- CATEGORY -->
+    <select name="category">
+      <option value="all">All categories</option>
+      {% for cat in categories %}
+        <option
+          value="{{ cat }}"
+          {% if cat == selected_category %}selected{% endif %}
+        >
+          {{ cat|capitalize }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <!-- ZACHOWAJ show_top -->
+    <input type="hidden" name="show_top" value="{{ 'true' if show_top_section else 'false' }}">
+
+    <button type="submit">Search</button>
+  </form>
+</div>
+
       <div class="user-options">
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('cart.view_cart') }}">Cart</a>
@@ -33,7 +54,8 @@
           <button class="dropdown-btn">☰</button>
           <div class="dropdown-content">
             <a href="{{ url_for('orders.view_orders') }}">My Orders</a>
-            <a href="{{ url_for('main.my_watches') }}">My Watches</a>
+            <a href="{{ url_for('main.my_products') }}">My Products</a>
+            <a href="{{ url_for('product.list_products') }}">Manage Products</a>
             <a href="{{ url_for('auth.logout') }}">Logout</a>
           </div>
         </div>
@@ -70,37 +92,192 @@
         class="category-link"
         >Luxury</a
       >
+      <div class="category-toggle">
+        {% if show_top_section %}
+        <a
+          href="{{ url_for('main.index', show_top='false') }}"
+          class="toggle-link"
+          >Hide Top Products</a
+        >
+        {% else %}
+        <a
+          href="{{ url_for('main.index', show_top='true') }}"
+          class="toggle-link"
+          >Show Top Products</a
+        >
+        {% endif %}
+      </div>
     </nav>
 
     <main>
-      <section class="watch-gallery">
-        {% for watch in watches %}
-        <div class="watch-card">
-          <img
-            src="{{ url_for('static', filename=watch.image_url) }}"
-            alt="{{ watch.name }}"
-          />
-          <div class="watch-details">
-            <h2>{{ watch.name }}</h2>
-            <p class="brand">{{ watch.brand }}</p>
-            <p class="price">${{ watch.price }}</p>
-            <p class="description">{{ watch.description }}</p>
-            {% if current_user.is_authenticated %}
-            <form
-              action="{{ url_for('cart.add_to_cart', watch_id=watch.id) }}"
-              method="POST"
-            >
-              <button type="submit">Add to Cart</button>
-            </form>
-            {% else %}
-            <p>
-              <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
-            </p>
-            {% endif %}
-          </div>
+      {% if show_top_section %}
+      <section class="top-products-section">
+        <div class="section-header">
+          <h2>🔥 Top Selling Products</h2>
+          <p class="subtitle">Most popular products in the last 30 days</p>
         </div>
-        {% endfor %}
+        <div class="top-products-gallery">
+          {% for product_data in top_products %}
+          {% set product = product_data[0] %}
+          {% set total_sold = product_data[1] %}
+          {% set order_count = product_data[2] %}
+          <div class="top-product-card" data-product-id="{{ product.id }}">
+            <div class="ranking-badge">#{{ loop.index }}</div>
+            {% if total_sold > 0 %}
+            <div class="sales-badge">{{ total_sold }} sold</div>
+            {% else %}
+            <div class="new-badge">New</div>
+            {% endif %}
+            <img
+              src="{{ url_for('static', filename=product.image_url) }}"
+              alt="{{ product.name }}"
+            />
+            <div class="product-details">
+              <h3>{{ product.name }}</h3>
+              <p class="brand">{{ product.brand }}</p>
+              <p class="price">${{ product.price }}</p>
+              <p class="description">{{ product.description[:100] }}{% if product.description|length > 100 %}...{% endif %}</p>
+              {% if product.color or product.material or product.purpose %}
+              <div class="product-specs">
+                {% if product.color %}<span class="spec">{{ product.color }}</span>{% endif %}
+                {% if product.material %}<span class="spec">{{ product.material }}</span>{% endif %}
+                {% if product.purpose %}<span class="spec">{{ product.purpose }}</span>{% endif %}
+              </div>
+              {% endif %}
+              {% if current_user.is_authenticated %}
+              <form
+                action="{{ url_for('cart.add_to_cart', product_id=product.id) }}"
+                method="POST"
+                class="add-to-cart-form"
+                data-product-id="{{ product.id }}"
+              >
+                <button type="submit" class="btn-add-to-cart">Add to Cart</button>
+              </form>
+              {% else %}
+              <p class="login-prompt">
+                <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
+              </p>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </section>
+      {% endif %}
+
+      <div id="recommendations-container">
+      {% if recommendations %}
+      <section class="recommendations-section">
+        <div class="section-header">
+          <h2>✨ Special for You</h2>
+          <p class="subtitle">AI strategy: {{ strategy }}</p>
+          <p class="subtitle">Selected based on your favorite brands</p>
+          <p class="subtitle">
+            Recommendations generated by AI based on similarities with other customers.
+          </p>
+        </div>
+        <div class="product-gallery">
+          {% for product in recommendations %}
+          <div class="product-card" data-product-id="{{ product.id }}">
+            <img
+              src="{{ url_for('static', filename=product.image_url) }}"
+              alt="{{ product.name }}"
+            />
+            <div class="product-details">
+              <h2>{{ product.name }}</h2>
+              <p class="brand">{{ product.brand }}</p>
+              <p class="price">${{ product.price }}</p>
+              <p class="description">{{ product.description }}</p>
+              {% if product.color or product.material or product.purpose %}
+              <div class="product-specs">
+                {% if product.color %}<span class="spec">Color: {{ product.color }}</span>{% endif %}
+                {% if product.material %}<span class="spec">Material: {{ product.material }}</span>{% endif %}
+                {% if product.purpose %}<span class="spec">Purpose: {{ product.purpose }}</span>{% endif %}
+              </div>
+              {% endif %}
+              {% if current_user.is_authenticated %}
+              <form
+                action="{{ url_for('cart.add_to_cart', product_id=product.id) }}"
+                method="POST"
+                class="add-to-cart-form"
+                data-product-id="{{ product.id }}"
+                data-source="recommendation"
+                data-strategy="{{ strategy }}"
+              >
+                <button type="submit" class="btn-add-to-cart">Add to Cart</button>
+              </form>
+              {% else %}
+              <p class="login-prompt">
+                <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
+              </p>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+      </div>
+
+<section class="product-gallery">
+
+  
+  <div class="section-header">
+    <h2>Products</h2>
+    <p class="subtitle">Browse our complete collection</p>
+  </div>
+
+
+  {% for product in products %}
+  <div class="product-card" data-product-id="{{ product.id }}">
+    <img
+      src="{{ url_for('static', filename=product.image_url) }}"
+      alt="{{ product.name }}"
+    />
+
+    <div class="product-details">
+      <h2>{{ product.name }}</h2>
+      <p class="brand">{{ product.brand }}</p>
+      <p class="price">${{ product.price }}</p>
+      <p class="description">{{ product.description }}</p>
+
+      {% if product.color or product.material or product.purpose %}
+      <div class="product-specs">
+        {% if product.color %}
+          <span class="spec">Color: {{ product.color }}</span>
+        {% endif %}
+        {% if product.material %}
+          <span class="spec">Material: {{ product.material }}</span>
+        {% endif %}
+        {% if product.purpose %}
+          <span class="spec">Purpose: {{ product.purpose }}</span>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if current_user.is_authenticated %}
+      <form
+        action="{{ url_for('cart.add_to_cart', product_id=product.id) }}"
+        method="POST"
+        class="add-to-cart-form"
+        data-product-id="{{ product.id }}"
+        data-source="organic"
+        data-strategy=""
+      >
+        <button type="submit" class="btn-add-to-cart">Add to Cart</button>
+      </form>
+      {% else %}
+      <p class="login-prompt">
+        <a href="{{ url_for('auth.login') }}">Log in to add to cart</a>
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+
+</section>
+
+
     </main>
 
     <footer class="footer">
@@ -109,10 +286,191 @@
       </div>
       <div class="footer-info">
         <p>30-200 Cracow</p>
-        <p>Email: mdsupport@watchstore.com</p>
+        <p>Email: mdsupport@productstore.com</p>
         <p>Phone: +739 221 226</p>
         <p>Fax: +123 456 780</p>
       </div>
     </footer>
+
+    <script>
+        // Toast notification system
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing enhanced cart functionality...');
+            
+            attachListeners(document);
+            updateRecommendations(); // 👈 TO MUSI BYĆ
+
+            console.log('Enhanced cart functionality initialization complete');
+        });
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : '#dc3545'};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                z-index: 9999;
+                font-weight: bold;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.3s ease;
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Click tracking functionality
+        function trackProductClick(productId) {
+            console.log('Tracking click for product ID:', productId);
+            
+            fetch('/api/track-click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ product_id: productId })
+            })
+            .then(response => {
+                console.log('Click tracking response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Click tracking successful:', data);
+            })
+            .catch(error => {
+                // Log error for debugging but don't interrupt user experience
+                console.error('Click tracking failed:', error);
+            });
+        }
+
+        // Update recommendations dynamically
+        function updateRecommendations() {
+            fetch('/api/recommendations-html')
+            .then(response => {
+                if (response.status === 204) {
+                    return '';
+                }
+                return response.text();
+            })
+            .then(html => {
+                const container = document.getElementById('recommendations-container');
+                if (container) {
+                    container.innerHTML = html;
+                    // Re-attach listeners to the new content
+                    attachListeners(container);
+                }
+            })
+            .catch(error => console.error('Error updating recommendations:', error));
+        }
+
+        // AJAX add to cart functionality
+        function handleAddToCart(form, productId) {
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            // Update button state
+            button.disabled = true;
+            button.textContent = 'Adding...';
+            const source = form.dataset.source || "organic";
+            const strategy = form.dataset.strategy || null;
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({
+                    source: source,
+                    strategy: strategy
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    // Briefly change button text to show success
+                    button.textContent = 'Added!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }, 1000);
+                    
+                    // Update recommendations since user interest changed
+                    updateRecommendations();
+                } else {
+                    showToast(data.message || 'Failed to add to cart', 'error');
+                    button.textContent = originalText;
+                    button.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Add to cart failed:', error);
+                showToast('Failed to add to cart. Please try again.', 'error');
+                button.textContent = originalText;
+                button.disabled = false;
+            });
+        }
+
+        function attachListeners(root) {
+            // Handle add to cart forms
+            const addToCartForms = root.querySelectorAll('.add-to-cart-form');
+            addToCartForms.forEach(form => {
+                // Remove old listener to avoid duplicates if re-attaching (though typically we replace innerHTML so elements are new)
+                // cloning node removes listeners but here elements are new from innerHTML
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); 
+                    const productId = form.dataset.productId;
+                    if (productId) {
+                        trackProductClick(parseInt(productId));
+                        handleAddToCart(form, productId);
+                    }
+                });
+            });
+
+            // Track clicks on images/titles
+            const images = root.querySelectorAll('.product-card img, .top-product-card img, .product-card h2, .top-product-card h3');
+            images.forEach(element => {
+                element.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card, .top-product-card');
+                    if (productCard) {
+                        const addToCartForm = productCard.querySelector('.add-to-cart-form');
+                        if (addToCartForm) {
+                            const productId = addToCartForm.dataset.productId;
+                            if (productId && !isNaN(productId)) {
+                                trackProductClick(parseInt(productId));
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+
+    </script>
+    {% include "partials/chat.html" %}
   </body>
 </html>
