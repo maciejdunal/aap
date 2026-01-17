@@ -59,7 +59,7 @@ http://127.0.0.1:5000/
 
 ## 🤖 Sekcja AI – Inteligentne systemy rekomendacji i ChatBot
 
-Aplikacja **Watch Store** została rozszerzona o moduły oparte na sztucznej inteligencji, których celem jest poprawa doświadczenia użytkownika, personalizacja oferty oraz inteligentne wsparcie zakupowe.
+Aplikacja **Product Store** została rozszerzona o moduły oparte na sztucznej inteligencji, których celem jest poprawa doświadczenia użytkownika, personalizacja oferty oraz inteligentne wsparcie zakupowe.
 
 W ramach projektu zaimplementowano **trzy główne komponenty AI**:
 
@@ -193,7 +193,7 @@ ChatBot pełni rolę prostego agenta, który:
 
 ## Podsumowanie
 
-W projekcie Watch Store zastosowano:
+W projekcie Product Store zastosowano:
 - dwa systemy rekomendacji (collaborative + content-based)
 - algorytm banditowy do uczenia skuteczności
 - ChatBota AI (GPT-4.1-mini) z mechanizmem RAG
