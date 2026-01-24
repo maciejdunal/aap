@@ -201,45 +201,6 @@ W projekcie Product Store zastosowano:
 
 System tworzy inteligentne, adaptacyjne środowisko e-commerce, które personalizuje ofertę i wspiera użytkownika w procesie zakupowym.
 
-## Dokumentacja zdjęciowa
-
-Aby lepiej zrozumieć działanie aplikacji, poniżej znajdują się zrzuty ekranu przedstawiające jej kluczowe funkcjonalności.
-
-### **Rejestracja**
-
-![Main Page](screenshots/register.jpg)
-
-### **Logowanie**
-
-![Main Page](screenshots/login.jpg)
-
-### **Strona główna**
-
-![Main Page](screenshots/home.jpg)
-
-### **ChatBot - Asystent**
-
-![Main Page](screenshots/chatbot.jpg)
-
-### **Rekomendacje - AI**
-
-![Main Page](screenshots/recommender.jpg)
-
-### **Strona główna**
-
-![Main Page](screenshots/home.jpg)
-
-### **Filtrowanie po kategorii produktow**
-
-![Cart Page](screenshots/sport-category.jpg)
-
-### **Koszyk użytkownika**
-
-![Cart Page](screenshots/cart.jpg)
-
-### **Checkout**
-
-![Cart Page](screenshots/checkout.jpg)
 
 ### **Historia zamówień**
 
